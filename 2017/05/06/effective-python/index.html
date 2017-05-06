@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>EvilPanda的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#这个文档来记录学习effective python心得体会  #类与继承 ##多用public属性，少用private属性  对于python的类来说，其属性可见度只有两种，即public和private。以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。  举个例子123456class myobject():  def __init_">
+  <meta name="description" content="这个文档来记录学习effective python心得体会 类与继承多用public属性，少用private属性 对于python的类来说，其属性可见度只有两种，即public和private。以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。  举个例子123456class myobject():  def __init__(self)">
 <meta name="keywords" content="python, 码农, 天元突破">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EvilPanda的博客">
 <meta property="og:url" content="http://yoursite.com/2017/05/06/effective-python/index.html">
 <meta property="og:site_name" content="EvilPanda的博客">
-<meta property="og:description" content="#这个文档来记录学习effective python心得体会  #类与继承 ##多用public属性，少用private属性  对于python的类来说，其属性可见度只有两种，即public和private。以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。  举个例子123456class myobject():  def __init_">
-<meta property="og:updated_time" content="2017-01-06T05:46:07.138Z">
+<meta property="og:description" content="这个文档来记录学习effective python心得体会 类与继承多用public属性，少用private属性 对于python的类来说，其属性可见度只有两种，即public和private。以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。  举个例子123456class myobject():  def __init__(self)">
+<meta property="og:updated_time" content="2017-05-06T03:10:15.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EvilPanda的博客">
-<meta name="twitter:description" content="#这个文档来记录学习effective python心得体会  #类与继承 ##多用public属性，少用private属性  对于python的类来说，其属性可见度只有两种，即public和private。以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。  举个例子123456class myobject():  def __init_">
+<meta name="twitter:description" content="这个文档来记录学习effective python心得体会 类与继承多用public属性，少用private属性 对于python的类来说，其属性可见度只有两种，即public和private。以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。  举个例子123456class myobject():  def __init__(self)">
   
     <link rel="alternative" href="/atom.xml" title="EvilPanda的博客" type="application/atom+xml">
   
@@ -153,11 +153,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#这个文档来记录学习effective python心得体会</p>
-<hr>
-<p>#类与继承</p>
-<p>##多用public属性，少用private属性</p>
-<ul>
+        <h1 id="这个文档来记录学习effective-python心得体会"><a href="#这个文档来记录学习effective-python心得体会" class="headerlink" title="这个文档来记录学习effective python心得体会"></a>这个文档来记录学习effective python心得体会</h1><hr>
+<h1 id="类与继承"><a href="#类与继承" class="headerlink" title="类与继承"></a>类与继承</h1><h2 id="多用public属性，少用private属性"><a href="#多用public属性，少用private属性" class="headerlink" title="多用public属性，少用private属性"></a>多用public属性，少用private属性</h2><ul>
 <li>对于python的类来说，其属性可见度只有两种，即public和private。<br>以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。</li>
 </ul>
 <p>举个例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myobject</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.__private_ = <span class="number">1</span></div><div class="line"></div><div class="line">me = myobject()</div><div class="line"><span class="keyword">print</span> me.__private_</div></pre></td></tr></table></figure></p>
