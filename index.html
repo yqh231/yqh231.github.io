@@ -54,8 +54,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -110,8 +108,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -132,9 +128,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -151,35 +145,103 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-effective-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-06T01:53:21.946Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>#这个文档来记录学习effective python心得体会</p>
+<hr>
+<p>#类与继承</p>
+<p>##多用public属性，少用private属性</p>
+<ul>
+<li>对于python的类来说，其属性可见度只有两种，即public和private。<br>以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。</li>
+</ul>
+<p>举个例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myobject</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.__private_ = <span class="number">1</span></div><div class="line"></div><div class="line">me = myobject()</div><div class="line"><span class="keyword">print</span> me.__private_</div></pre></td></tr></table></figure></p>
+<p>这个时候会报错，如果要访问_<em>private</em>属性，要通过类里的方法来访问。还有一点要注意，<strong>继承这个类的子类是无法访问private属性的</strong>。</p>
+<ul>
+<li><p>下面来谈一下private属性的原理，当Python解释器遇到类似<code>__private_</code>属性时会自动做一个替换，把<code>__private_</code>替换为<code>_myobject__private_</code>,然后通过这个名字来访问。所以如果直接访问<code>__private_</code>会导致错误发生。 根据这一原理，我们可以直接访问<code>_myobject__private_</code>，这样就不再受制于private属性的访问权限，可以在子类、外部来访问。</p>
+</li>
+<li><p>根据上面的介绍，我们可以知道python解释器实际上是无法严格限制对private属性的访问。所以为了尽量减少对private属性访问所带来的错误，我们最好都遵守通用规范来书写。类部私有的方法和属性的名字前面加一个<code>_</code>来表示，例如：<code>_private</code>，这样当你在子类或外部类来访问时应该慎重。</p>
+</li>
+<li><p>只有一种情况优先使用private属性，当超类里的变量是频繁被访问的，且子类不受你的控制。那么这个时候，子类与发类的重命名所带来的错误，应该使用private属性。</p>
+</li>
+</ul>
+<h2 id="colletions-abc的运用"><a href="#colletions-abc的运用" class="headerlink" title="colletions.abc的运用"></a>colletions.abc的运用</h2><ul>
+<li>python作为OO语言，在实际开发中我们大多数工作都是在进行类的编写。我们可以编写类，将数据对象之间交互方式封装在类中，从而定义自己的数据结构。但是想完美的定义一种数据结构并非简单的事。举个粒子：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span><span class="params">(list)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    super(example,self).__init__()</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">frequency</span><span class="params">(self)</span>:</span></div><div class="line">    counts = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> self:</div><div class="line">      counts.setdefault(item,<span class="number">0</span>)</div><div class="line">      counts[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> counts</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里我们定义了一种列表的frequency方法。然而只实现这种方法是不够的，我们还需要定义<code>__len__()</code>方法，来获取列表长度。为了避免忘掉编写某个方法的麻烦，可以使用<code>colletions.abc</code>。<br>请看下面粒子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> colletions.abc <span class="keyword">import</span> Sequence</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span><span class="params">(Sequence)</span>:</span></div><div class="line">  <span class="keyword">pass</span></div><div class="line">foo = example()</div></pre></td></tr></table></figure>
+<p>运行程序，这个时候会报错</p>
+<ul>
+<li>我们让子类继承Sequence这个抽象类，如果子类没有实现Sequence这个抽象类里方法，就会提示运行错误，这样就能避免忘记实现数据结构中的某种方法</li>
+</ul>
+<hr>
+<p>#元类及属性</p>
+<h2 id="用纯属性取代get和set方法"><a href="#用纯属性取代get和set方法" class="headerlink" title="用纯属性取代get和set方法"></a>用纯属性取代get和set方法</h2><ul>
+<li>在其他编程语言中，我们要对类中的属性进行操作时，需要手工实现setter和getter的方法，但是在Python中我们有更方便的方法来进行属性的操作。<br>请看下面粒子:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.test1 = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="meta">  @property</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.test1</div><div class="line"></div><div class="line"><span class="meta">  @test.setter</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self, value)</span>:</span></div><div class="line">    self.test1 = value</div><div class="line"></div><div class="line">exm = example()</div><div class="line">exm.test</div><div class="line">&gt;&gt; <span class="number">0</span></div><div class="line">exm.test = <span class="number">3</span></div><div class="line">exm.test</div><div class="line">&gt;&gt; <span class="number">3</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当我们调用property装饰器的时候，它会自动生成@test.setter装饰器。<br>这样就能很放便的进行get和set操作而不需要编写set和get函数。</p>
+<h2 id="用描述符来改写需要复用的property方法"><a href="#用描述符来改写需要复用的property方法" class="headerlink" title="用描述符来改写需要复用的property方法"></a>用描述符来改写需要复用的property方法</h2><ul>
+<li>前面通过property方法来设置属性，但是property设置属性有一个缺陷就是无法复用。这就意味着，如果有许多相似的功能时，我们需要重复的编写@property，这就造成了很多重复的工作。这个时候我们可以考虑使用<code>__set__</code>和<code>__get__</code>属性。</li>
+<li>下面讲解一下<code>__set__</code>和<code>__get__</code>的具体用法:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Celsius</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value = <span class="number">0.0</span>)</span>:</span></div><div class="line">    self.value = float(value)</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.value</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.value = float(value)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Temperature</span><span class="params">(object)</span>:</span></div><div class="line">  celsius1 = Celsius()</div><div class="line">  celsius2 = Celsius()</div><div class="line"></div><div class="line">temp = Temperature()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果一个类中定义类<code>__set__</code>和<code>__get__</code>方法我们就称这个类为descriptors。instance表示类的实例，在这里指temp。owner表示类，这里指Temperature。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">temp.celsius1 = <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>现在我们就能很方便对属性进行赋值了。但要注意一个问题<strong>celsius1和celsius2指向同一个实例</strong>。因为在Temperature初始化的过程中，Celsius只会初始化一次。</p>
+<ul>
+<li><p>为了解决这种问题，我们可以创建一个字典，来保存不同的状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Celsius</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self._value = &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></div><div class="line">    <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">      <span class="keyword">return</span> self._value.get(instance, <span class="number">0</span>)</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></div><div class="line">    <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">      self._value[instance] = value</div></pre></td></tr></table></figure>
+</li>
+<li><p>这样就能保存不同实例的状态。但这种做法会造成内存泄漏 <strong>- -!</strong>。为什么会造成内存泄漏，我也没有研究清楚。</p>
+</li>
+</ul>
+<h2 id="getattr-setattr-和-getattribute-按需生成属性"><a href="#getattr-setattr-和-getattribute-按需生成属性" class="headerlink" title="__getattr__, __setattr__和__getattribute__按需生成属性"></a><code>__getattr__, __setattr__和__getattribute__</code>按需生成属性</h2><ul>
+<li>前面介绍的设置属性的方法都是需要提前设置好属性，如果我们想要动态的设置属性就需要用到<code>__getattr__, __setatrr__和__getattribute__</code>等方法。</li>
+<li>看下面的例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">lazyDB</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.exists = <span class="number">5</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, name)</span>:</span></div><div class="line">    value = <span class="string">'value for %s'</span> % name</div><div class="line">    setattr(self, name, value)</div><div class="line">    <span class="keyword">return</span> value</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里定义了一个类，当我们对<code>lazyDB</code>设置属性的时候，python会自动在lazyDB的生成实例字典中去寻找，如果没有找到则会调用<code>__getattr__</code>方法。这个时候我们可以用<code>setattr</code>方法将属性设置下去。一旦设置下去了，下一次调用该属性时，就能直接找<code>__dict__</code>里面找到，就不会再次调用<code>__getattr__</code>方法。</p>
+<p>而对于<code>__getattribute__</code>和<code>__setattr__</code>属性，他们不管是直接函数调用还是普通属性赋值都会触string发。其中注意<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self,name,value)</span>:</span></div><div class="line">  super(xx, self).__setattr__(self, name ,value)</div></pre></td></tr></table></figure></p>
+<p><strong>这里注意，一定要用super否则会出现无限递归!!</strong></p>
+<h2 id="使用subprocess来控制进程"><a href="#使用subprocess来控制进程" class="headerlink" title="使用subprocess来控制进程"></a>使用subprocess来控制进程</h2><ul>
+<li>我们可以使用subprocess来对子进程进行管理，下面讲解一下subprocess的用法:<h3 id="subprocess-call-args-stdin-None-stdout-None-stderr-None-shell-False"><a href="#subprocess-call-args-stdin-None-stdout-None-stderr-None-shell-False" class="headerlink" title="subprocess.call(*args, stdin = None, stdout = None, stderr = None, shell = False)"></a><code>subprocess.call(*args, stdin = None, stdout = None, stderr = None, shell = False)</code></h3></li>
+<li>subprocess.call的*args参数可以接受一个列表，列表里面为执行指令的命令。如下例所示:<br><code>subprocess.call([&#39;ls&#39;, &#39;-l&#39;])</code>但是它只能接受一些最常用的命令，如果是复杂的指令应该使用Popen()方法。</li>
+</ul>
+<h3 id="subprocess-check-output-args-stdin-None-stdout-None-stderr-None-shell-False"><a href="#subprocess-check-output-args-stdin-None-stdout-None-stderr-None-shell-False" class="headerlink" title="subprocess.check_output(*args, stdin = None, stdout = None, stderr = None, shell = False)"></a><code>subprocess.check_output(*args, stdin = None, stdout = None, stderr = None, shell = False)</code></h3><ul>
+<li>check_output方法与call方法类似，但是它只能输出字符串。<br><code>subprocess.check_output(&quot;exit 1&quot;, shell = True)</code><br>如果是类似于这种执行指令，那么会报错。</li>
+</ul>
+<h3 id="subprocess-Popen-args-bufsize-0-executable-None-stdin-None-stdout-None-stderr-None-preexec-fn-None-close-fds-False-shell-False-cwd-None-env-None-universal-newlines-False-startupinfo-None-creationflags-0"><a href="#subprocess-Popen-args-bufsize-0-executable-None-stdin-None-stdout-None-stderr-None-preexec-fn-None-close-fds-False-shell-False-cwd-None-env-None-universal-newlines-False-startupinfo-None-creationflags-0" class="headerlink" title="subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)"></a><code>subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)</code></h3><ul>
+<li>Popen的args用法与上面的类似<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> shlex, subprocess</div><div class="line">command_line = raw_input()</div><div class="line">args = shlex.split(command_line)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里说明一下stdin,sdtout和stderr的用法。如果参数为空，则表明子进程不会额外有新的管道而是继承父进程的文件句柄。可选参数为subprocess.PIPE，可以用来表示一个文件句柄，一个文件对象。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_openssl</span><span class="params">(data)</span>:</span></div><div class="line">  env = os.environ.copy()</div><div class="line">  en[<span class="string">'password'</span>] = <span class="string">'......'</span></div><div class="line">  proc = subprocess.Popen([<span class="string">'openssl'</span>, <span class="string">'enc'</span>, <span class="string">'-desc3'</span>, <span class="string">'-pass'</span>, <span class="string">'env:password'</span>],</div><div class="line">                          env = env,</div><div class="line">                          stdin = subprocess.PIPE</div><div class="line">                          stdout = subprocess.PIPE)</div><div class="line">  proc.stdin.write(data)</div><div class="line">  proc.stdin.flush()</div></pre></td></tr></table></figure></p>
+<h3 id="Popen-poll"><a href="#Popen-poll" class="headerlink" title="Popen.poll()"></a><code>Popen.poll()</code></h3><ul>
+<li>这个方法用来检查子进程是否已经终止<h3 id="Popen-wait"><a href="#Popen-wait" class="headerlink" title="Popen.wait()"></a><code>Popen.wait()</code></h3></li>
+<li>这个方法等待子进程终止<h3 id="Popen-communicate-input-None"><a href="#Popen-communicate-input-None" class="headerlink" title="Popen.communicate(input = None)"></a><code>Popen.communicate(input = None)</code></h3></li>
+<li>这个方法可以与子进程进行交互，从stdin输入数据，stdout获得输出的数据。<h3 id="Popen-terminate"><a href="#Popen-terminate" class="headerlink" title="Popen.terminate()"></a><code>Popen.terminate()</code></h3></li>
+<li>停止子进程<h3 id="Popen-kill"><a href="#Popen-kill" class="headerlink" title="Popen.kill()"></a><code>Popen.kill()</code></h3></li>
+<li>杀死子进程</li>
+</ul>
+<h2 id="使用Queue来协调线程工作"><a href="#使用Queue来协调线程工作" class="headerlink" title="使用Queue来协调线程工作"></a>使用Queue来协调线程工作</h2><ul>
+<li>开发过程中，我们经常需要协调实务，在各种协调方式中，我们通常使用函数管线。函数管线的作用类似于工厂中的流水线。一个东西要一部分完成了再进行下一部分。如果我们使用列表来作为管道会遇到下面的问题:</li>
+</ul>
+<ol>
+<li>每个阶段的工作函数，其执行速度可能有差别，这就使前一阶段可能会拖慢后一阶段的进度，从而令整个管道延迟。前一阶段的任务如果迟迟没有完成，那么后一阶段将会陷入饥饿，浪费运算。</li>
+<li>还有如果某一阶段的任务处理较慢，那么前面阶段将会堆积，可能造成内存耗尽从而崩溃。</li>
+</ol>
+<ul>
+<li>我们可以使用内置的Queue类来解决这个问题。请看下面例子:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</div><div class="line">queue = Queue()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">print</span>（<span class="string">'Consumer waiting'</span>)</div><div class="line">  queue.get()</div><div class="line">  print(<span class="string">'Consumer done'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当queue.get()这个方法被调用的时候，如果队列为空线程在这里会被阻塞，直到queue.put()加入新的事务到队列里面。这样就无需查询队列的状态。同时我们还能指定内存的状态，这样能防止超出内存限制。例如，<code>queue = Queue(1)</code>，我们还可以使用<code>queue.task_done()</code>来判断管道中的任务是否处理完毕。同时可以继承Queue来重构。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClosableQueue</span><span class="params">(Queue)</span>:</span></div><div class="line">  SENTINEL = object()</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></div><div class="line">    self.put(self.SENTINEL)</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">      item = self.get()</div><div class="line">      <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">if</span> item <span class="keyword">is</span> self.SENTINEL:</div><div class="line">          <span class="keyword">return</span></div><div class="line">        <span class="keyword">yield</span> item</div><div class="line"></div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">      self.task_done()</div></pre></td></tr></table></figure></p>
+<h2 id="使用协程来模拟并发"><a href="#使用协程来模拟并发" class="headerlink" title="使用协程来模拟并发"></a>使用协程来模拟并发</h2><ul>
+<li>前面使用线程来实现的并发的方式，但多线程存在维护难度大，切换开销大等缺点。我们可以使用协程来实现并发。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_coroutine</span><span class="params">()</span>:</span></div><div class="line">  received = <span class="keyword">yield</span> <span class="number">3</span></div><div class="line">  <span class="keyword">print</span> (<span class="string">'received'</span>, received)</div><div class="line"></div><div class="line">it = my_coroutine()</div><div class="line">value = next(it) <span class="comment"># or it.next()</span></div><div class="line">it.send(<span class="string">"first"</span>)</div><div class="line">it.send(<span class="string">"second"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>程序开始运行的时候，当运行到<code>value = next(it)</code>的时候，线程会在这里会被阻塞，切换到<code>received = yield 3</code>。这里yield会给received返回一个值。当调用send的时候，会将send的值赋给received，并继续运行。这样就能实现并发执行程序。<strong>注意一点，send or next，都只执行到下一个yield</strong>。</p>
 
       
 
@@ -192,7 +254,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/06/effective-python/">展开全文 >></a>
         </p>
       
 
