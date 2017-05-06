@@ -149,6 +149,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/python/">python语法细节</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/python/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="这个文档用来记录python的语法细节"><a href="#这个文档用来记录python的语法细节" class="headerlink" title="这个文档用来记录python的语法细节"></a>这个文档用来记录python的语法细节</h1><hr>
+<h3 id="functools-partial"><a href="#functools-partial" class="headerlink" title="functools.partial"></a>functools.partial</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">print</span> x + y</div><div class="line"></div><div class="line">addplus = partial(add, <span class="number">3</span>)</div><div class="line"><span class="keyword">print</span> addplus(<span class="number">3</span>)</div><div class="line">&gt;&gt; <span class="number">6</span></div><div class="line"></div><div class="line">addplus = partial(add, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line"><span class="keyword">print</span> addplus()</div><div class="line">&gt;&gt; <span class="number">7</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> addplus(<span class="number">3</span>)</div><div class="line"><span class="comment">#error</span></div></pre></td></tr></table></figure>
+<ul>
+<li>相当于把参数直接赋值给<code>add</code>函数
+        
+          <a class="article-more-a" href="/2017/05/06/python/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/python/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-python_lib" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -380,70 +444,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/06/python_lib/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/python/">python语法细节</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="这个文档用来记录python的语法细节"><a href="#这个文档用来记录python的语法细节" class="headerlink" title="这个文档用来记录python的语法细节"></a>这个文档用来记录python的语法细节</h1><hr>
-<h3 id="functools-partial"><a href="#functools-partial" class="headerlink" title="functools.partial"></a>functools.partial</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">print</span> x + y</div><div class="line"></div><div class="line">addplus = partial(add, <span class="number">3</span>)</div><div class="line"><span class="keyword">print</span> addplus(<span class="number">3</span>)</div><div class="line">&gt;&gt; <span class="number">6</span></div><div class="line"></div><div class="line">addplus = partial(add, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line"><span class="keyword">print</span> addplus()</div><div class="line">&gt;&gt; <span class="number">7</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> addplus(<span class="number">3</span>)</div><div class="line"><span class="comment">#error</span></div></pre></td></tr></table></figure>
-<ul>
-<li>相当于把参数直接赋值给<code>add</code>函数
-        
-          <a class="article-more-a" href="/2017/05/06/python/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/python/">展开全文 >></a>
         </p>
       
 

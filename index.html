@@ -152,6 +152,21 @@
     <article id="post-django" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/django/">django</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/django/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="django文档"><a href="#django文档" class="headerlink" title="django文档"></a>django文档</h1><h3 id="url视图调度器"><a href="#url视图调度器" class="headerlink" title="url视图调度器"></a>url视图调度器</h3><p><a href="http://www.cnblogs.com/scolia/p/5563332.html" target="_blank" rel="external">url调度器初级</a><br><a href="http://www.cnblogs.com/scolia/p/5564622.html" target="_blank" rel="external">url调度器中级</a><br><a href="http://www.cnblogs.com/scolia/p/5564989.html" target="_blank" rel="external">url调度器高级</a></p>
@@ -168,6 +183,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -187,30 +213,34 @@
 
 
   
-    <article id="post-flask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-effective-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/effective-python/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="记录学习flask的知识"><a href="#记录学习flask的知识" class="headerlink" title="记录学习flask的知识"></a>记录学习flask的知识</h1><hr>
-<h3 id="itsdangerous"><a href="#itsdangerous" class="headerlink" title="itsdangerous"></a><code>itsdangerous</code></h3><p>1.签名接口<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> Signer</div><div class="line">s = Singer(<span class="string">'secret-key'</span>)</div><div class="line">&gt;&gt; s.sign(<span class="string">'my string'</span>)</div><div class="line">&gt; <span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span></div><div class="line">&gt;&gt; s.unsign(<span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span>)</div><div class="line">&gt; <span class="string">'my string'</span></div></pre></td></tr></table></figure></p>
-<p>2.使用时间戳签名</p>
-<ul>
-<li>时间戳签名可以过期。反签名的时候可以验证有没有过期<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> TimestampSigner</div><div class="line">s = TimestampSigner(<span class="string">'secret-key'</span>)</div><div class="line">string = s.sign(<span class="string">'foo'</span>)</div><div class="line">s.unsign(string, max_age = <span class="number">5</span>)</div></pre></td></tr></table></figure>
-</li>
+        <h2 id="类与继承"><a href="#类与继承" class="headerlink" title="类与继承"></a>类与继承</h2><h2 id="多用public属性，少用private属性"><a href="#多用public属性，少用private属性" class="headerlink" title="多用public属性，少用private属性"></a>多用public属性，少用private属性</h2><ul>
+<li>对于python的类来说，其属性可见度只有两种，即public和private。<br>以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。</li>
 </ul>
-<p>3.序列化</p>
-<ul>
-<li>因为字符串难以处理，本模块也提供了一个与json<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> Serializer</div><div class="line">s = Serializer(<span class="string">'secret-key'</span>)</div><div class="line">s.dumps([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">&gt;&gt; <span class="string">'[1, 2, 3, 4].r7R9RhGgDPvvWl3iNzLuIIfELmo'</span></div><div class="line">s.loads(<span class="string">'[1, 2, 3, 4].r7R9RhGgDPvvWl3iNzLuIIfELmo'</span>)</div><div class="line">&gt;&gt; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>4.URL安全序列化</p>
-<ul>
-<li>如果能够向只有字符受限的环境中传递可信的字符串的话，将十分有用<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> URLSafeSerializer</div><div class="line">s = URLSafeSerializer(<span class="string">'secret-key'</span>)</div><div class="line">s.dumps([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">&gt;&gt; <span class="string">'WzEsMiwzLDRd.wSPHqC0gR7VUqivlSukJ0IeTDgo'</span></div><div class="line">s.loads(<span class="string">'WzEsMiwzLDRd.wSPHqC0gR7VUqivlSukJ0IeTDgo'</span>)</div><div class="line">&gt;&gt; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>5.JSON WEB签名<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> JSONWebSignatureSerializer</div><div class="line">s = JSONWebSignatureSerializer(<span class="string">'secret-key'</span>)</div><div class="line">s.dumps(&#123;<span class="string">'x'</span>:<span class="number">42</span>&#125;)</div><div class="line">&gt;&gt; <span class="string">'eyJhbGciOiJIUzI1NiJ9.eyJ4Ijo0Mn0.ZdTn1YyGz9Yx5B5wNpWRL221G1WpVE5fPCPKNuc6UAo'</span></div><div class="line">s.loads(<span class="string">'eyJhbGciOiJIUzI1NiJ9.eyJ4Ijo0Mn0.ZdTn1YyGz9Yx5B5wNpWRL221G1WpVE5fPCPKNuc6UAo'</span>)</div></pre></td></tr></table></figure></p>
-
+<p>举个例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myobject</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.__private_ = <span class="number">1</span></div><div class="line"></div><div class="line">me = myobject()</div><div class="line"><span class="keyword">print</span> me.__private_</div></pre></td></tr></table></figure></p>
+<p>这个时候会报错，如果要访问_<em>private</em>属性，要通过类里的方法来访问。还有一点要注意，<strong>继承这个类的子类是无法访问private属性的</strong>。<br>
+        
+          <a class="article-more-a" href="/2017/05/06/effective-python/#more">more >></a>
+        
       
 
       
@@ -218,6 +248,79 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/effective-python/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-flask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/flask/">flask</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/flask/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记录学习flask的知识"><a href="#记录学习flask的知识" class="headerlink" title="记录学习flask的知识"></a>记录学习flask的知识</h1><hr>
+<h3 id="itsdangerous"><a href="#itsdangerous" class="headerlink" title="itsdangerous"></a><code>itsdangerous</code></h3><p>1.签名接口<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> Signer</div><div class="line">s = Singer(<span class="string">'secret-key'</span>)</div><div class="line">&gt;&gt; s.sign(<span class="string">'my string'</span>)</div><div class="line">&gt; <span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span></div><div class="line">&gt;&gt; s.unsign(<span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span>)</div><div class="line">&gt; <span class="string">'my string'</span></div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2017/05/06/flask/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -382,19 +485,19 @@
 
 
   
-    <article id="post-effective-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
+      <a class="article-title" href="/2017/05/06/mongodb/">mongodb</a>
     </h1>
   
 
         
-        <a href="/2017/05/06/effective-python/" class="archive-article-date">
+        <a href="/2017/05/06/mongodb/" class="archive-article-date">
   	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
 </a>
         
@@ -402,13 +505,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="类与继承"><a href="#类与继承" class="headerlink" title="类与继承"></a>类与继承</h2><h2 id="多用public属性，少用private属性"><a href="#多用public属性，少用private属性" class="headerlink" title="多用public属性，少用private属性"></a>多用public属性，少用private属性</h2><ul>
-<li>对于python的类来说，其属性可见度只有两种，即public和private。<br>以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。</li>
+        <h1 id="MongoEngine"><a href="#MongoEngine" class="headerlink" title="MongoEngine"></a>MongoEngine</h1><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *</div><div class="line"></div><div class="line">connect(<span class="string">'mydb'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  email = StringField(required = <span class="keyword">True</span>)</div><div class="line">  first_name = StringField(max_length = <span class="number">50</span>)</div><div class="line">  last_name = StringField(max_length = <span class="number">50</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>这是一个最基本的模型，这个类就是集合的一个映射，集合的名字就是类的名字</li>
 </ul>
-<p>举个例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myobject</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.__private_ = <span class="number">1</span></div><div class="line"></div><div class="line">me = myobject()</div><div class="line"><span class="keyword">print</span> me.__private_</div></pre></td></tr></table></figure></p>
-<p>这个时候会报错，如果要访问_<em>private</em>属性，要通过类里的方法来访问。还有一点要注意，<strong>继承这个类的子类是无法访问private属性的</strong>。<br>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(Document)</span>:</span></div><div class="line">  title = StringField(max_length = <span class="number">120</span>, required = <span class="keyword">True</span>)</div><div class="line">  author = ReferenceField(User)</div><div class="line">  tags = ListField(StringField(max_length = <span class="number">30</span>))</div><div class="line">  meta = &#123;<span class="string">'allow_inheritance'</span>:<span class="keyword">True</span>&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextPost</span><span class="params">(Post)</span>:</span></div><div class="line">  content = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImagePost</span><span class="params">(Post)</span>:</span></div><div class="line">  image_path = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkPost</span><span class="params">(Post)</span>:</span></div><div class="line">  link_url = StringField()</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/05/06/effective-python/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/06/mongodb/#more">more >></a>
         
       
 
@@ -432,71 +536,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/effective-python/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-python-cookbook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/python-cookbook/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="让带有N个参数的可调用对象以较少的参数形式调用"><a href="#让带有N个参数的可调用对象以较少的参数形式调用" class="headerlink" title="让带有N个参数的可调用对象以较少的参数形式调用"></a>让带有N个参数的可调用对象以较少的参数形式调用</h2><ul>
-<li>看下面的例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">output_result</span><span class="params">(result, log = None)</span>:</span></div><div class="line">  <span class="keyword">if</span> log <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">    log.debug(<span class="string">'Got: %r'</span>, result)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x+y</div><div class="line"></div><div class="line"><span class="keyword">if</span> __nam__== <span class="string">'__main__'</span>:</div><div class="line">  <span class="keyword">import</span> logging</div><div class="line">  <span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">  <span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"></div><div class="line">  logging.basicConfig(level = logging.DEBUG)</div><div class="line">  log = logging.getLogger(<span class="string">'test'</span>)</div><div class="line"></div><div class="line">  p = Pool()</div><div class="line">  p.apply_async(add, (<span class="number">3</span>, <span class="number">4</span>), callback = partial(output_result, log = log))</div><div class="line">  p.close()</div><div class="line">  p.join()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/05/06/python-cookbook/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/python-cookbook/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/06/mongodb/">展开全文 >></a>
         </p>
       
 
@@ -574,19 +614,19 @@
 
 
   
-    <article id="post-mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-python-cookbook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/mongodb/">mongodb</a>
+      <a class="article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
     </h1>
   
 
         
-        <a href="/2017/05/06/mongodb/" class="archive-article-date">
+        <a href="/2017/05/06/python-cookbook/" class="archive-article-date">
   	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
 </a>
         
@@ -594,14 +634,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MongoEngine"><a href="#MongoEngine" class="headerlink" title="MongoEngine"></a>MongoEngine</h1><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *</div><div class="line"></div><div class="line">connect(<span class="string">'mydb'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  email = StringField(required = <span class="keyword">True</span>)</div><div class="line">  first_name = StringField(max_length = <span class="number">50</span>)</div><div class="line">  last_name = StringField(max_length = <span class="number">50</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li>这是一个最基本的模型，这个类就是集合的一个映射，集合的名字就是类的名字</li>
+        <h2 id="让带有N个参数的可调用对象以较少的参数形式调用"><a href="#让带有N个参数的可调用对象以较少的参数形式调用" class="headerlink" title="让带有N个参数的可调用对象以较少的参数形式调用"></a>让带有N个参数的可调用对象以较少的参数形式调用</h2><ul>
+<li>看下面的例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">output_result</span><span class="params">(result, log = None)</span>:</span></div><div class="line">  <span class="keyword">if</span> log <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">    log.debug(<span class="string">'Got: %r'</span>, result)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x+y</div><div class="line"></div><div class="line"><span class="keyword">if</span> __nam__== <span class="string">'__main__'</span>:</div><div class="line">  <span class="keyword">import</span> logging</div><div class="line">  <span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">  <span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"></div><div class="line">  logging.basicConfig(level = logging.DEBUG)</div><div class="line">  log = logging.getLogger(<span class="string">'test'</span>)</div><div class="line"></div><div class="line">  p = Pool()</div><div class="line">  p.apply_async(add, (<span class="number">3</span>, <span class="number">4</span>), callback = partial(output_result, log = log))</div><div class="line">  p.close()</div><div class="line">  p.join()</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(Document)</span>:</span></div><div class="line">  title = StringField(max_length = <span class="number">120</span>, required = <span class="keyword">True</span>)</div><div class="line">  author = ReferenceField(User)</div><div class="line">  tags = ListField(StringField(max_length = <span class="number">30</span>))</div><div class="line">  meta = &#123;<span class="string">'allow_inheritance'</span>:<span class="keyword">True</span>&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextPost</span><span class="params">(Post)</span>:</span></div><div class="line">  content = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImagePost</span><span class="params">(Post)</span>:</span></div><div class="line">  image_path = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkPost</span><span class="params">(Post)</span>:</span></div><div class="line">  link_url = StringField()</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/05/06/mongodb/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/06/python-cookbook/#more">more >></a>
         
       
 
@@ -625,7 +663,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/mongodb/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/06/python-cookbook/">展开全文 >></a>
         </p>
       
 

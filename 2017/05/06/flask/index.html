@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>EvilPanda的博客</title>
+  <title>flask | EvilPanda的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录学习flask的知识 itsdangerous1.签名接口123456from itsdangerous import Signers = Singer(&apos;secret-key&apos;)&amp;gt;&amp;gt; s.sign(&apos;my string&apos;)&amp;gt; &apos;my string.wh6tMHxLgJqB6oY1uT73iMlyrOA&apos;&amp;gt;&amp;gt; s.unsign(&apos;my string.wh6tMHx">
-<meta name="keywords" content="python, 码农, 天元突破">
+<meta name="keywords" content="编程,笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EvilPanda的博客">
+<meta property="og:title" content="flask">
 <meta property="og:url" content="http://yoursite.com/2017/05/06/flask/index.html">
 <meta property="og:site_name" content="EvilPanda的博客">
 <meta property="og:description" content="记录学习flask的知识 itsdangerous1.签名接口123456from itsdangerous import Signers = Singer(&apos;secret-key&apos;)&amp;gt;&amp;gt; s.sign(&apos;my string&apos;)&amp;gt; &apos;my string.wh6tMHxLgJqB6oY1uT73iMlyrOA&apos;&amp;gt;&amp;gt; s.unsign(&apos;my string.wh6tMHx">
-<meta property="og:updated_time" content="2017-02-05T11:27:21.084Z">
+<meta property="og:updated_time" content="2017-05-06T04:41:44.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EvilPanda的博客">
+<meta name="twitter:title" content="flask">
 <meta name="twitter:description" content="记录学习flask的知识 itsdangerous1.签名接口123456from itsdangerous import Signers = Singer(&apos;secret-key&apos;)&amp;gt;&amp;gt; s.sign(&apos;my string&apos;)&amp;gt; &apos;my string.wh6tMHxLgJqB6oY1uT73iMlyrOA&apos;&amp;gt;&amp;gt; s.unsign(&apos;my string.wh6tMHx">
   
     <link rel="alternative" href="/atom.xml" title="EvilPanda的博客" type="application/atom+xml">
@@ -151,10 +151,26 @@
             <article id="post-flask" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flask
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/flask/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="记录学习flask的知识"><a href="#记录学习flask的知识" class="headerlink" title="记录学习flask的知识"></a>记录学习flask的知识</h1><hr>
 <h3 id="itsdangerous"><a href="#itsdangerous" class="headerlink" title="itsdangerous"></a><code>itsdangerous</code></h3><p>1.签名接口<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> Signer</div><div class="line">s = Singer(<span class="string">'secret-key'</span>)</div><div class="line">&gt;&gt; s.sign(<span class="string">'my string'</span>)</div><div class="line">&gt; <span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span></div><div class="line">&gt;&gt; s.unsign(<span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span>)</div><div class="line">&gt; <span class="string">'my string'</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>2.使用时间戳签名</p>
 <ul>
 <li>时间戳签名可以过期。反签名的时候可以验证有没有过期<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> TimestampSigner</div><div class="line">s = TimestampSigner(<span class="string">'secret-key'</span>)</div><div class="line">string = s.sign(<span class="string">'foo'</span>)</div><div class="line">s.unsign(string, max_age = <span class="number">5</span>)</div></pre></td></tr></table></figure>
@@ -200,6 +216,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -264,11 +291,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/06/django/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/06/effective-python/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          effective python笔记
         
       </div>
     </a>
