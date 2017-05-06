@@ -415,19 +415,19 @@
 
 
   
-    <article id="post-linux_command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/linux_command/">linux command</a>
+      <a class="article-title" href="/2017/05/06/mysql/">mysql</a>
     </h1>
   
 
         
-        <a href="/2017/05/06/linux_command/" class="archive-article-date">
+        <a href="/2017/05/06/mysql/" class="archive-article-date">
   	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
 </a>
         
@@ -435,18 +435,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h1><h3 id="创建符号链接"><a href="#创建符号链接" class="headerlink" title="创建符号链接"></a>创建符号链接</h3><p><strong><em>硬链接</em></strong></p>
-<ul>
-<li>硬链接是一个文件名，创建指令。硬链接有一个计数器，没删除一个硬链接，计数器减1,当计数器归0的时候，删除文件。<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>&gt;ln fun fun-hard</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong><em>软链接</em></strong></p>
-<ul>
-<li>软链接类似于一个指针，可以只向文件和文件夹，硬链接不能指向文件夹<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>&gt; ln -s fun fun-soft</div></pre></td></tr></table></figure>
-</li>
-</ul>
+        <h1 id="mysql数据库操作指令"><a href="#mysql数据库操作指令" class="headerlink" title="mysql数据库操作指令"></a>mysql数据库操作指令</h1><h3 id="连接指令"><a href="#连接指令" class="headerlink" title="连接指令"></a>连接指令</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)</div><div class="line"></div><div class="line">mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“root”，密码“123”)</div><div class="line"></div><div class="line">mysql -h localhost -u root -p(MySQL 连接本地数据库，用户名为“root”，隐藏密码)</div></pre></td></tr></table></figure>
+<h3 id="mysql权限管理"><a href="#mysql权限管理" class="headerlink" title="mysql权限管理"></a>mysql权限管理</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-administration.html" target="_blank" rel="external">MYSQL权限管理</a></p>
+<h3 id="mysql数据类型"><a href="#mysql数据类型" class="headerlink" title="mysql数据类型"></a>mysql数据类型</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-data-types.html" target="_blank" rel="external">MYSQL数据类型</a><br>
         
-          <a class="article-more-a" href="/2017/05/06/linux_command/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/06/mysql/#more">more >></a>
         
       
 
@@ -470,7 +463,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/linux_command/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/06/mysql/">展开全文 >></a>
         </p>
       
 
@@ -551,19 +544,19 @@
 
 
   
-    <article id="post-mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-linux_command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/mysql/">mysql</a>
+      <a class="article-title" href="/2017/05/06/linux_command/">linux command</a>
     </h1>
   
 
         
-        <a href="/2017/05/06/mysql/" class="archive-article-date">
+        <a href="/2017/05/06/linux_command/" class="archive-article-date">
   	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
 </a>
         
@@ -571,11 +564,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="mysql数据库操作指令"><a href="#mysql数据库操作指令" class="headerlink" title="mysql数据库操作指令"></a>mysql数据库操作指令</h1><h3 id="连接指令"><a href="#连接指令" class="headerlink" title="连接指令"></a>连接指令</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)</div><div class="line"></div><div class="line">mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“root”，密码“123”)</div><div class="line"></div><div class="line">mysql -h localhost -u root -p(MySQL 连接本地数据库，用户名为“root”，隐藏密码)</div></pre></td></tr></table></figure>
-<h3 id="mysql权限管理"><a href="#mysql权限管理" class="headerlink" title="mysql权限管理"></a>mysql权限管理</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-administration.html" target="_blank" rel="external">MYSQL权限管理</a></p>
-<h3 id="mysql数据类型"><a href="#mysql数据类型" class="headerlink" title="mysql数据类型"></a>mysql数据类型</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-data-types.html" target="_blank" rel="external">MYSQL数据类型</a><br>
+        <h1 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h1><h3 id="创建符号链接"><a href="#创建符号链接" class="headerlink" title="创建符号链接"></a>创建符号链接</h3><p><strong><em>硬链接</em></strong></p>
+<ul>
+<li>硬链接是一个文件名，创建指令。硬链接有一个计数器，没删除一个硬链接，计数器减1,当计数器归0的时候，删除文件。<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>&gt;ln fun fun-hard</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><em>软链接</em></strong></p>
+<ul>
+<li>软链接类似于一个指针，可以只向文件和文件夹，硬链接不能指向文件夹<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>&gt; ln -s fun fun-soft</div></pre></td></tr></table></figure>
+</li>
+</ul>
         
-          <a class="article-more-a" href="/2017/05/06/mysql/#more">more >></a>
+          <a class="article-more-a" href="/2017/05/06/linux_command/#more">more >></a>
         
       
 
@@ -599,7 +599,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/mysql/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/06/linux_command/">展开全文 >></a>
         </p>
       
 
