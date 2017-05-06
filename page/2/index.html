@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | EvilPanda的博客</title>
+  <title>EvilPanda的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
 <meta name="keywords" content="python, 码农, 天元突破">
 <meta property="og:type" content="website">
 <meta property="og:title" content="EvilPanda的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="EvilPanda的博客">
 <meta property="og:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
 <meta name="twitter:card" content="summary">
@@ -149,76 +149,221 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python_lib" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/python_lib/">标准库</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/python_lib/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记录Python库的用法"><a href="#记录Python库的用法" class="headerlink" title="记录Python库的用法"></a>记录Python库的用法</h1><hr>
+<h3 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h3><ol>
+<li>count<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.count(start= 10, step = 1)-&gt;10 ,11, 12</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>返回一个无限迭代器</li>
+</ul>
+<ol>
+<li>cycle<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.cycle("abc") -&gt;a,b,c,a,b,c</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>一个无限迭代器，不断循环abc的值</li>
+</ul>
+<ol>
+<li>repeat<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.repeat(10, times = 3) -&gt;10,10,10</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>重复返回值为10的迭代器，后面为可选参数，是重复次数</li>
+</ul>
+<ol>
+<li>chain<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.chain('abc', 'def') -&gt; a,b,c,d,e,f</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>返回一个生成器，先使用第一个迭代器中的元素，当第一个迭代器中的元素耗尽时，用第二个迭代器的元素</li>
+</ul>
+<ol>
+<li>compress<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.comress(<span class="string">'abcdef'</span>, [<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>])</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>只返回与1匹配的值</li>
+</ul>
+<ol>
+<li>dropwhile<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.dropwhile(lambda x:x&lt;9, [1,9,0,1]) -&gt; 9,0.1</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>挨个执行列表里的元素，当前面表达式为真则丢弃，直到表达式为假时，保留后面的元素</li>
+</ul>
+<ol>
+<li>ifilter<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.ifilter(lambda x:x%2, range(10)) -&gt;1,3,5,7,9</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>筛选出是前面表达式为真的元素</li>
+</ul>
+<ol>
+<li>ifilterfalse()<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.ifilterfalse(lambda x:x%2, range(10)) -&gt;0,2,4,6,8</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>筛选出使表达式为假的元素</li>
+</ul>
+<ol>
+<li><p>islice(iterable,start,stop,step) // islice(iterable, stop)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">itertools.islice('ABCDEFG', 2) -&gt;A B</div><div class="line">itertools.islice('ABCDEDFG'，2,4) -&gt;C D</div></pre></td></tr></table></figure>
+</li>
+<li><p>imap()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.imap(pow, (2,3,10), (5,2,3)) -&gt;32 9 100</div></pre></td></tr></table></figure>
+</li>
+<li><p>starmap()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.starmap(pow, [(2,5), (3,2), (10,3)]) -&gt; 32, 9, 1000</div></pre></td></tr></table></figure>
+</li>
+<li><p>takewhile()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.takewhile(lambda x:x&lt;5,[1,4,6,4,1]) -&gt;1,4</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>与dropwhile用法相反true的时候执行，遇到false停止</li>
+</ul>
+<ol>
+<li><p>izip()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.izip('ABCD', 'xy') -&gt;Ax, By</div></pre></td></tr></table></figure>
+</li>
+<li><p>izip_longest()</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">itertools.izip_longest('ABCD', 'xy', fillvalue = '-') -&gt; Ax,By,C-,D-</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="os之file-derectories操作"><a href="#os之file-derectories操作" class="headerlink" title="os之file,derectories操作"></a>os之file,derectories操作</h3><ol>
+<li>os.access(path, mode)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if os.access(&quot;myfile&quot;, os.R_OK):</div><div class="line">  pass</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>查看是否有这个文件的权限，os.F_ok(查看这个文件是否存在), os.R_ok(是否具有可读权限)，os.W_ok(是否具有可写的权限)，</li>
+<li>os.X_ok(是否具有可执行的权限)</li>
+</ul>
+<ol>
+<li>os.chdir(path)</li>
+</ol>
+<ul>
+<li>切换工作路径至path所代表的文件夹</li>
+</ul>
+<ol>
+<li>os.fchdir(fd)</li>
+</ol>
+<ul>
+<li>切换工作路径至fd文件描述符所代表的文件夹</li>
+</ul>
+<ol>
+<li>os.getcwd()</li>
+</ol>
+<ul>
+<li>返回当期脚本的工作路径</li>
+</ul>
+<ol>
+<li>os.getcwdu()</li>
+</ol>
+<ul>
+<li>返回当期脚本工作路径的unicode编码</li>
+</ul>
+<ol>
+<li>os.chroot(path)</li>
+</ol>
+<ul>
+<li>将根目录放到当期路径上</li>
+</ul>
+<p>7.os.chmod(path, mode)</p>
+<ul>
+<li>改变当期文件的访问权限</li>
+</ul>
+<p><a href="http://www.runoob.com/python/os-file-methods.html" target="_blank" rel="external">不想写了，放链接</a></p>
+<h3 id="os-path"><a href="#os-path" class="headerlink" title="os.path"></a>os.path</h3><p><a href="http://www.cnblogs.com/dkblog/archive/2011/03/25/1995537.html" target="_blank" rel="external">os.path</a></p>
+<p><a href="http://www.cnblogs.com/wuxie1989/p/5623435.html" target="_blank" rel="external">os.path常用方法</a></p>
+<h3 id="系统总结一下requests库的用法"><a href="#系统总结一下requests库的用法" class="headerlink" title="系统总结一下requests库的用法"></a>系统总结一下requests库的用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">r = requests.get(<span class="string">'https://api.github.com/events'</span>)</div><div class="line"></div><div class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'values'</span>&#125;)</div><div class="line">r = requets.put(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</div><div class="line">r = requets.head(<span class="string">'http://httpbin.org/get'</span>)</div><div class="line">r = requets.options(<span class="string">'http://httpbin.org/get'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>给URL填写查询字符串</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">payload = &#123;'key1':'value1', 'key2':'value2'&#125;</div><div class="line">r = requets.get('http://httpbin.org/get', params = payload)</div><div class="line"></div><div class="line">print r.url #输出url</div><div class="line">&gt;&gt; http://httpbin.org/get?key2=value2&amp;key1=value1</div><div class="line"></div><div class="line">print r.text #输出text的内容</div><div class="line">print r.encoding #输出编码格式</div><div class="line">print r.content #按字节输出内容</div></pre></td></tr></table></figure>
+</li>
+<li><p>将request的内容存储为图片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</div><div class="line"></div><div class="line">i = Image.open(BytesIO(r.content))</div></pre></td></tr></table></figure>
+</li>
+<li><p>将get的内容用json来编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(<span class="string">'https://api.github.com/events'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.json()</div></pre></td></tr></table></figure>
+</li>
+<li><p>获得从服务器发过来的socket的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">r = requests.get(<span class="string">'https://api.github.com/events'</span>, stream=<span class="keyword">True</span>)</div><div class="line">r.raw</div><div class="line">r.raw.read(<span class="number">20</span>) <span class="comment">#可选读的字节数</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义头部</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">url = <span class="string">'https://api.github.com/some/endpoint'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'my-app/0.0.1'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(url, headers=headers)</div></pre></td></tr></table></figure>
+</li>
+<li><p>发送文件内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">url = <span class="string">'http://httpbin.org/post'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>files = &#123;<span class="string">'file'</span>: open(<span class="string">'report.xls'</span>, <span class="string">'rb'</span>)&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.post(url, files=files)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.text</div></pre></td></tr></table></figure>
+</li>
+<li><p>也可以自己content_type和文件名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>url = <span class="string">'http://httpbin.org/post'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>files = &#123;<span class="string">'file'</span>: (<span class="string">'report.xls'</span>, open(<span class="string">'report.xls'</span>, <span class="string">'rb'</span>), <span class="string">'application/vnd.ms-excel'</span>, &#123;<span class="string">'Expires'</span>: <span class="string">'0'</span>&#125;)&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.post(url, files=files)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.text</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回的状态码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(<span class="string">'http://httpbin.org/get'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.status_code</div><div class="line"><span class="number">200</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.headers</div><div class="line">&#123;</div><div class="line">    <span class="string">'content-encoding'</span>: <span class="string">'gzip'</span>,</div><div class="line">    <span class="string">'transfer-encoding'</span>: <span class="string">'chunked'</span>,</div><div class="line">    <span class="string">'connection'</span>: <span class="string">'close'</span>,</div><div class="line">    <span class="string">'server'</span>: <span class="string">'nginx/1.0.4'</span>,</div><div class="line">    <span class="string">'x-runtime'</span>: <span class="string">'148ms'</span>,</div><div class="line">    <span class="string">'etag'</span>: <span class="string">'"e1ca502697e5c9317743dc078f67693f"'</span>,</div><div class="line">    <span class="string">'content-type'</span>: <span class="string">'application/json'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.headers[<span class="string">'Content-Type'</span>]</div><div class="line"><span class="string">'application/json'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.headers.get(<span class="string">'content-type'</span>)</div><div class="line"><span class="string">'application/json'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>获取cookies</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>url = <span class="string">'http://example.com/some/cookie/setting/url'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(url)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.cookies[<span class="string">'example_cookie_name'</span>]</div><div class="line"><span class="string">'example_cookie_value'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>上传cookies</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>url = <span class="string">'http://httpbin.org/cookies'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cookies = dict(cookies_are=<span class="string">'working'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(url, cookies=cookies)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.text</div><div class="line"><span class="string">'&#123;"cookies": &#123;"cookies_are": "working"&#125;&#125;'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>重定向</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(<span class="string">'http://github.com'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.url</div><div class="line"><span class="string">'https://github.com/'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.status_code</div><div class="line"><span class="number">200</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.history</div><div class="line">[&lt;Response [<span class="number">301</span>]&gt;]</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = requests.get(<span class="string">'http://github.com'</span>, allow_redirects=<span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.status_code</div><div class="line"><span class="number">301</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.history</div><div class="line">[]</div></pre></td></tr></table></figure>
+</li>
+<li><p>requets库的高级用法</p>
+</li>
+<li><p><a href="https://my.oschina.net/liuyuantao/blog/748741" target="_blank" rel="external">requets高级用法</a></p>
+</li>
+<li><p>xpath的用法</p>
+</li>
+<li><a href="http://www.w3school.com.cn/xpath/xpath_intro.asp" target="_blank" rel="external">XPATH</a></li>
+</ul>
+<h3 id="多线程threading用法"><a href="#多线程threading用法" class="headerlink" title="多线程threading用法"></a>多线程threading用法</h3><ul>
+<li>threading.activeCount()<br>返回当期存在的线程数量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mutex = threading.Lock()</div><div class="line"><span class="comment">#锁的使用</span></div><div class="line"><span class="comment">#创建锁</span></div><div class="line">mutex = threading.Lock()</div><div class="line"><span class="comment">#锁定</span></div><div class="line">mutex.acquire([timeout])</div><div class="line"><span class="comment">#释放</span></div><div class="line">mutex.release()</div></pre></td></tr></table></figure>
+<ul>
+<li><p>在锁锁定之后可以调用，<code>mutex.wait()</code>来阻塞，<code>mutex.notify()</code>来释放阻塞</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mutex.acquire()</div><div class="line">mutex.wait()<span class="comment">#这里阻塞，这个方法必须在acquire之后调用，否则会报错</span></div><div class="line">mutex.release()</div><div class="line"></div><div class="line">mutex.acquire()</div><div class="line">mutex.notify()<span class="comment">#这里释放阻塞，同样需要在acquire后调用</span></div><div class="line">mutex.release()</div></pre></td></tr></table></figure>
+</li>
+<li><p>信号量的使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></div><div class="line">    availableTables=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,threadName,semaphore)</span>:</span></div><div class="line">        self.interval =random.randrange(<span class="number">1</span>,<span class="number">6</span>)</div><div class="line">        self.semaphore =semaphore</div><div class="line">        threading.Thread.__init__(self,name=threadName)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        self.semaphore.acquire()</div><div class="line">        <span class="comment">#acquire a semaphore</span></div><div class="line">        table = MyThread.availableTables.pop()</div><div class="line">        <span class="keyword">print</span> <span class="string">"%s entered;seated at table %s."</span> %(self.getName(),table)</div><div class="line">        time.sleep(self.interval)</div><div class="line"></div><div class="line">        <span class="comment">#free a table</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"%s exiting,freeing table %s."</span> %(self.getName(),table)</div><div class="line">        MyThread.availableTables.append(table)</div><div class="line"></div><div class="line">        self.semaphore.release()</div><div class="line"></div><div class="line">mySemaphore = threading.Semaphore(len(MyThread.availableTables))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Test</span><span class="params">()</span>:</span></div><div class="line">    threads=[]</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</div><div class="line">        threads.append(MyThread(<span class="string">"thread"</span>+str(i),mySemaphore))</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(threads)):</div><div class="line">        threads[i].start()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    Test()</div></pre></td></tr></table></figure>
+</li>
+<li><p>threading.Time()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""</span></div><div class="line">延迟1秒执行</div><div class="line">"""</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"hello, world"</span></div><div class="line">t = threading.Timer(<span class="number">1</span>, hello)</div><div class="line">t.start()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="python-pdb库"><a href="#python-pdb库" class="headerlink" title="python pdb库"></a>python pdb库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pdb</div><div class="line">pdb.set_trace()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">h(elp) [comman]  <span class="comment">#打印可用指令及帮助信息</span></div><div class="line"></div><div class="line">r(eturn)  <span class="comment">#运行代码直到下一个断点或当前函数返回</span></div><div class="line"></div><div class="line">b(reak) [[filename:]lineno | function[, condition]]  <span class="comment">#指定文件某行或函数体来设置断点</span></div><div class="line"></div><div class="line">l(ist) [first[, last]]  <span class="comment">#查看指定代码段</span></div><div class="line"></div><div class="line">n(ext)  <span class="comment">#执行下一行</span></div><div class="line"></div><div class="line">s(tep) <span class="comment">#执行下一行，若为函数则进入函数体</span></div><div class="line"></div><div class="line">p  <span class="comment">#打印某个变量</span></div><div class="line"></div><div class="line">a(rgs)  <span class="comment">#打印当前函数的参数</span></div><div class="line"></div><div class="line">w(here)  <span class="comment">#打印堆栈信息</span></div><div class="line"></div><div class="line">d(own)  <span class="comment">#移至下层堆栈</span></div><div class="line"></div><div class="line">u(p)  <span class="comment">#移至上层堆栈</span></div><div class="line"></div><div class="line">j(ump)  <span class="comment">#跳转到指定行</span></div><div class="line"></div><div class="line"><span class="keyword">continue</span> / c  <span class="comment">#继续执行</span></div><div class="line"></div><div class="line">disable [bpnumber [bpnumber]] <span class="comment">#失效断点</span></div><div class="line"></div><div class="line">enable[bpnumber [bpnumber]]  <span class="comment">#启用断点</span></div><div class="line"></div><div class="line">cl(ear) [filename:lineno | bpnumber [bpnumber]] <span class="comment">#删除断点</span></div><div class="line"></div><div class="line">q(uit)/exit  <span class="comment">#中止调试并退出</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/django/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/flask/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/high_quality_python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/high_quality_python/">高质量python编程读书笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -230,33 +375,59 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/python_lib/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
+
+
+
   
+    <article id="post-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/linux_command/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/linux_command/">linux command</a>
+      <a class="article-title" href="/2017/05/06/python/">python语法细节</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/06/python/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="这个文档用来记录python的语法细节"><a href="#这个文档用来记录python的语法细节" class="headerlink" title="这个文档用来记录python的语法细节"></a>这个文档用来记录python的语法细节</h1><hr>
+<h3 id="functools-partial"><a href="#functools-partial" class="headerlink" title="functools.partial"></a>functools.partial</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">print</span> x + y</div><div class="line"></div><div class="line">addplus = partial(add, <span class="number">3</span>)</div><div class="line"><span class="keyword">print</span> addplus(<span class="number">3</span>)</div><div class="line">&gt;&gt; <span class="number">6</span></div><div class="line"></div><div class="line">addplus = partial(add, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line"><span class="keyword">print</span> addplus()</div><div class="line">&gt;&gt; <span class="number">7</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> addplus(<span class="number">3</span>)</div><div class="line"><span class="comment">#error</span></div></pre></td></tr></table></figure>
+<ul>
+<li>相当于把参数直接赋值给<code>add</code>函数
+        
+          <a class="article-more-a" href="/2017/05/06/python/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -268,247 +439,30 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/python/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/effective-python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python-cookbook/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mysql/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mysql/">mysql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mongodb/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mongodb/">mongodb</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python_lib/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python_lib/">标准库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python/">python语法细节</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-    
 
 
           </div>
@@ -530,9 +484,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

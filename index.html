@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://s.gravatar.com/avatar/b289614806b85df99323ccb74287f7c0?s=80" class="js-avatar">
+			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1494051836394&amp;di=b731724d80ed754ee484d4342539449d&amp;imgtype=0&amp;src=http%3A%2F%2Fimg001.photo.21cn.com%2Fphotos%2Falbum%2F20080822%2Fm600%2F8700941E470F1F5F79101E89676F9C4F.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">EvilPanda</a></h1>
@@ -102,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://s.gravatar.com/avatar/b289614806b85df99323ccb74287f7c0?s=80" class="js-avatar">
+				<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1494051836394&amp;di=b731724d80ed754ee484d4342539449d&amp;imgtype=0&amp;src=http%3A%2F%2Fimg001.photo.21cn.com%2Fphotos%2Falbum%2F20080822%2Fm600%2F8700941E470F1F5F79101E89676F9C4F.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">EvilPanda</h1>
@@ -149,100 +149,17 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-effective-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-django" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="这个文档来记录学习effective-python心得体会"><a href="#这个文档来记录学习effective-python心得体会" class="headerlink" title="这个文档来记录学习effective python心得体会"></a>这个文档来记录学习effective python心得体会</h1><hr>
-<h1 id="类与继承"><a href="#类与继承" class="headerlink" title="类与继承"></a>类与继承</h1><h2 id="多用public属性，少用private属性"><a href="#多用public属性，少用private属性" class="headerlink" title="多用public属性，少用private属性"></a>多用public属性，少用private属性</h2><ul>
-<li>对于python的类来说，其属性可见度只有两种，即public和private。<br>以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。</li>
+        <h1 id="django文档"><a href="#django文档" class="headerlink" title="django文档"></a>django文档</h1><h3 id="url视图调度器"><a href="#url视图调度器" class="headerlink" title="url视图调度器"></a>url视图调度器</h3><p><a href="http://www.cnblogs.com/scolia/p/5563332.html" target="_blank" rel="external">url调度器初级</a><br><a href="http://www.cnblogs.com/scolia/p/5564622.html" target="_blank" rel="external">url调度器中级</a><br><a href="http://www.cnblogs.com/scolia/p/5564989.html" target="_blank" rel="external">url调度器高级</a></p>
+<h3 id="settings-py配置文件"><a href="#settings-py配置文件" class="headerlink" title="settings.py配置文件"></a>settings.py配置文件</h3><ul>
+<li>ALLOWED_HOSTS，允许访问的域名</li>
+<li>MIDDLEWARE_CLASSES,注册中间件，要按顺序,request从上到下，response从下到上</li>
+<li>DATAVASES，数据库配置</li>
 </ul>
-<p>举个例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myobject</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.__private_ = <span class="number">1</span></div><div class="line"></div><div class="line">me = myobject()</div><div class="line"><span class="keyword">print</span> me.__private_</div></pre></td></tr></table></figure></p>
-<p>这个时候会报错，如果要访问_<em>private</em>属性，要通过类里的方法来访问。还有一点要注意，<strong>继承这个类的子类是无法访问private属性的</strong>。</p>
-<ul>
-<li><p>下面来谈一下private属性的原理，当Python解释器遇到类似<code>__private_</code>属性时会自动做一个替换，把<code>__private_</code>替换为<code>_myobject__private_</code>,然后通过这个名字来访问。所以如果直接访问<code>__private_</code>会导致错误发生。 根据这一原理，我们可以直接访问<code>_myobject__private_</code>，这样就不再受制于private属性的访问权限，可以在子类、外部来访问。</p>
-</li>
-<li><p>根据上面的介绍，我们可以知道python解释器实际上是无法严格限制对private属性的访问。所以为了尽量减少对private属性访问所带来的错误，我们最好都遵守通用规范来书写。类部私有的方法和属性的名字前面加一个<code>_</code>来表示，例如：<code>_private</code>，这样当你在子类或外部类来访问时应该慎重。</p>
-</li>
-<li><p>只有一种情况优先使用private属性，当超类里的变量是频繁被访问的，且子类不受你的控制。那么这个时候，子类与发类的重命名所带来的错误，应该使用private属性。</p>
-</li>
-</ul>
-<h2 id="colletions-abc的运用"><a href="#colletions-abc的运用" class="headerlink" title="colletions.abc的运用"></a>colletions.abc的运用</h2><ul>
-<li>python作为OO语言，在实际开发中我们大多数工作都是在进行类的编写。我们可以编写类，将数据对象之间交互方式封装在类中，从而定义自己的数据结构。但是想完美的定义一种数据结构并非简单的事。举个粒子：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span><span class="params">(list)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    super(example,self).__init__()</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">frequency</span><span class="params">(self)</span>:</span></div><div class="line">    counts = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> self:</div><div class="line">      counts.setdefault(item,<span class="number">0</span>)</div><div class="line">      counts[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> counts</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里我们定义了一种列表的frequency方法。然而只实现这种方法是不够的，我们还需要定义<code>__len__()</code>方法，来获取列表长度。为了避免忘掉编写某个方法的麻烦，可以使用<code>colletions.abc</code>。<br>请看下面粒子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> colletions.abc <span class="keyword">import</span> Sequence</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span><span class="params">(Sequence)</span>:</span></div><div class="line">  <span class="keyword">pass</span></div><div class="line">foo = example()</div></pre></td></tr></table></figure>
-<p>运行程序，这个时候会报错</p>
-<ul>
-<li>我们让子类继承Sequence这个抽象类，如果子类没有实现Sequence这个抽象类里方法，就会提示运行错误，这样就能避免忘记实现数据结构中的某种方法</li>
-</ul>
-<hr>
-<p>#元类及属性</p>
-<h2 id="用纯属性取代get和set方法"><a href="#用纯属性取代get和set方法" class="headerlink" title="用纯属性取代get和set方法"></a>用纯属性取代get和set方法</h2><ul>
-<li>在其他编程语言中，我们要对类中的属性进行操作时，需要手工实现setter和getter的方法，但是在Python中我们有更方便的方法来进行属性的操作。<br>请看下面粒子:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">example</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.test1 = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="meta">  @property</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.test1</div><div class="line"></div><div class="line"><span class="meta">  @test.setter</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(self, value)</span>:</span></div><div class="line">    self.test1 = value</div><div class="line"></div><div class="line">exm = example()</div><div class="line">exm.test</div><div class="line">&gt;&gt; <span class="number">0</span></div><div class="line">exm.test = <span class="number">3</span></div><div class="line">exm.test</div><div class="line">&gt;&gt; <span class="number">3</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>当我们调用property装饰器的时候，它会自动生成@test.setter装饰器。<br>这样就能很放便的进行get和set操作而不需要编写set和get函数。</p>
-<h2 id="用描述符来改写需要复用的property方法"><a href="#用描述符来改写需要复用的property方法" class="headerlink" title="用描述符来改写需要复用的property方法"></a>用描述符来改写需要复用的property方法</h2><ul>
-<li>前面通过property方法来设置属性，但是property设置属性有一个缺陷就是无法复用。这就意味着，如果有许多相似的功能时，我们需要重复的编写@property，这就造成了很多重复的工作。这个时候我们可以考虑使用<code>__set__</code>和<code>__get__</code>属性。</li>
-<li>下面讲解一下<code>__set__</code>和<code>__get__</code>的具体用法:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Celsius</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value = <span class="number">0.0</span>)</span>:</span></div><div class="line">    self.value = float(value)</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.value</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.value = float(value)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Temperature</span><span class="params">(object)</span>:</span></div><div class="line">  celsius1 = Celsius()</div><div class="line">  celsius2 = Celsius()</div><div class="line"></div><div class="line">temp = Temperature()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如果一个类中定义类<code>__set__</code>和<code>__get__</code>方法我们就称这个类为descriptors。instance表示类的实例，在这里指temp。owner表示类，这里指Temperature。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">temp.celsius1 = <span class="number">1</span></div></pre></td></tr></table></figure></p>
-<p>现在我们就能很方便对属性进行赋值了。但要注意一个问题<strong>celsius1和celsius2指向同一个实例</strong>。因为在Temperature初始化的过程中，Celsius只会初始化一次。</p>
-<ul>
-<li><p>为了解决这种问题，我们可以创建一个字典，来保存不同的状态。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Celsius</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self._value = &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></div><div class="line">    <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">      <span class="keyword">return</span> self._value.get(instance, <span class="number">0</span>)</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></div><div class="line">    <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">      self._value[instance] = value</div></pre></td></tr></table></figure>
-</li>
-<li><p>这样就能保存不同实例的状态。但这种做法会造成内存泄漏 <strong>- -!</strong>。为什么会造成内存泄漏，我也没有研究清楚。</p>
-</li>
-</ul>
-<h2 id="getattr-setattr-和-getattribute-按需生成属性"><a href="#getattr-setattr-和-getattribute-按需生成属性" class="headerlink" title="__getattr__, __setattr__和__getattribute__按需生成属性"></a><code>__getattr__, __setattr__和__getattribute__</code>按需生成属性</h2><ul>
-<li>前面介绍的设置属性的方法都是需要提前设置好属性，如果我们想要动态的设置属性就需要用到<code>__getattr__, __setatrr__和__getattribute__</code>等方法。</li>
-<li>看下面的例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">lazyDB</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.exists = <span class="number">5</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, name)</span>:</span></div><div class="line">    value = <span class="string">'value for %s'</span> % name</div><div class="line">    setattr(self, name, value)</div><div class="line">    <span class="keyword">return</span> value</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里定义了一个类，当我们对<code>lazyDB</code>设置属性的时候，python会自动在lazyDB的生成实例字典中去寻找，如果没有找到则会调用<code>__getattr__</code>方法。这个时候我们可以用<code>setattr</code>方法将属性设置下去。一旦设置下去了，下一次调用该属性时，就能直接找<code>__dict__</code>里面找到，就不会再次调用<code>__getattr__</code>方法。</p>
-<p>而对于<code>__getattribute__</code>和<code>__setattr__</code>属性，他们不管是直接函数调用还是普通属性赋值都会触string发。其中注意<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self,name,value)</span>:</span></div><div class="line">  super(xx, self).__setattr__(self, name ,value)</div></pre></td></tr></table></figure></p>
-<p><strong>这里注意，一定要用super否则会出现无限递归!!</strong></p>
-<h2 id="使用subprocess来控制进程"><a href="#使用subprocess来控制进程" class="headerlink" title="使用subprocess来控制进程"></a>使用subprocess来控制进程</h2><ul>
-<li>我们可以使用subprocess来对子进程进行管理，下面讲解一下subprocess的用法:<h3 id="subprocess-call-args-stdin-None-stdout-None-stderr-None-shell-False"><a href="#subprocess-call-args-stdin-None-stdout-None-stderr-None-shell-False" class="headerlink" title="subprocess.call(*args, stdin = None, stdout = None, stderr = None, shell = False)"></a><code>subprocess.call(*args, stdin = None, stdout = None, stderr = None, shell = False)</code></h3></li>
-<li>subprocess.call的*args参数可以接受一个列表，列表里面为执行指令的命令。如下例所示:<br><code>subprocess.call([&#39;ls&#39;, &#39;-l&#39;])</code>但是它只能接受一些最常用的命令，如果是复杂的指令应该使用Popen()方法。</li>
-</ul>
-<h3 id="subprocess-check-output-args-stdin-None-stdout-None-stderr-None-shell-False"><a href="#subprocess-check-output-args-stdin-None-stdout-None-stderr-None-shell-False" class="headerlink" title="subprocess.check_output(*args, stdin = None, stdout = None, stderr = None, shell = False)"></a><code>subprocess.check_output(*args, stdin = None, stdout = None, stderr = None, shell = False)</code></h3><ul>
-<li>check_output方法与call方法类似，但是它只能输出字符串。<br><code>subprocess.check_output(&quot;exit 1&quot;, shell = True)</code><br>如果是类似于这种执行指令，那么会报错。</li>
-</ul>
-<h3 id="subprocess-Popen-args-bufsize-0-executable-None-stdin-None-stdout-None-stderr-None-preexec-fn-None-close-fds-False-shell-False-cwd-None-env-None-universal-newlines-False-startupinfo-None-creationflags-0"><a href="#subprocess-Popen-args-bufsize-0-executable-None-stdin-None-stdout-None-stderr-None-preexec-fn-None-close-fds-False-shell-False-cwd-None-env-None-universal-newlines-False-startupinfo-None-creationflags-0" class="headerlink" title="subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)"></a><code>subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)</code></h3><ul>
-<li>Popen的args用法与上面的类似<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> shlex, subprocess</div><div class="line">command_line = raw_input()</div><div class="line">args = shlex.split(command_line)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里说明一下stdin,sdtout和stderr的用法。如果参数为空，则表明子进程不会额外有新的管道而是继承父进程的文件句柄。可选参数为subprocess.PIPE，可以用来表示一个文件句柄，一个文件对象。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_openssl</span><span class="params">(data)</span>:</span></div><div class="line">  env = os.environ.copy()</div><div class="line">  en[<span class="string">'password'</span>] = <span class="string">'......'</span></div><div class="line">  proc = subprocess.Popen([<span class="string">'openssl'</span>, <span class="string">'enc'</span>, <span class="string">'-desc3'</span>, <span class="string">'-pass'</span>, <span class="string">'env:password'</span>],</div><div class="line">                          env = env,</div><div class="line">                          stdin = subprocess.PIPE</div><div class="line">                          stdout = subprocess.PIPE)</div><div class="line">  proc.stdin.write(data)</div><div class="line">  proc.stdin.flush()</div></pre></td></tr></table></figure></p>
-<h3 id="Popen-poll"><a href="#Popen-poll" class="headerlink" title="Popen.poll()"></a><code>Popen.poll()</code></h3><ul>
-<li>这个方法用来检查子进程是否已经终止<h3 id="Popen-wait"><a href="#Popen-wait" class="headerlink" title="Popen.wait()"></a><code>Popen.wait()</code></h3></li>
-<li>这个方法等待子进程终止<h3 id="Popen-communicate-input-None"><a href="#Popen-communicate-input-None" class="headerlink" title="Popen.communicate(input = None)"></a><code>Popen.communicate(input = None)</code></h3></li>
-<li>这个方法可以与子进程进行交互，从stdin输入数据，stdout获得输出的数据。<h3 id="Popen-terminate"><a href="#Popen-terminate" class="headerlink" title="Popen.terminate()"></a><code>Popen.terminate()</code></h3></li>
-<li>停止子进程<h3 id="Popen-kill"><a href="#Popen-kill" class="headerlink" title="Popen.kill()"></a><code>Popen.kill()</code></h3></li>
-<li>杀死子进程</li>
-</ul>
-<h2 id="使用Queue来协调线程工作"><a href="#使用Queue来协调线程工作" class="headerlink" title="使用Queue来协调线程工作"></a>使用Queue来协调线程工作</h2><ul>
-<li>开发过程中，我们经常需要协调实务，在各种协调方式中，我们通常使用函数管线。函数管线的作用类似于工厂中的流水线。一个东西要一部分完成了再进行下一部分。如果我们使用列表来作为管道会遇到下面的问题:</li>
-</ul>
-<ol>
-<li>每个阶段的工作函数，其执行速度可能有差别，这就使前一阶段可能会拖慢后一阶段的进度，从而令整个管道延迟。前一阶段的任务如果迟迟没有完成，那么后一阶段将会陷入饥饿，浪费运算。</li>
-<li>还有如果某一阶段的任务处理较慢，那么前面阶段将会堆积，可能造成内存耗尽从而崩溃。</li>
-</ol>
-<ul>
-<li>我们可以使用内置的Queue类来解决这个问题。请看下面例子:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</div><div class="line">queue = Queue()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">print</span>（<span class="string">'Consumer waiting'</span>)</div><div class="line">  queue.get()</div><div class="line">  print(<span class="string">'Consumer done'</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>当queue.get()这个方法被调用的时候，如果队列为空线程在这里会被阻塞，直到queue.put()加入新的事务到队列里面。这样就无需查询队列的状态。同时我们还能指定内存的状态，这样能防止超出内存限制。例如，<code>queue = Queue(1)</code>，我们还可以使用<code>queue.task_done()</code>来判断管道中的任务是否处理完毕。同时可以继承Queue来重构。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClosableQueue</span><span class="params">(Queue)</span>:</span></div><div class="line">  SENTINEL = object()</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></div><div class="line">    self.put(self.SENTINEL)</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">      item = self.get()</div><div class="line">      <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">if</span> item <span class="keyword">is</span> self.SENTINEL:</div><div class="line">          <span class="keyword">return</span></div><div class="line">        <span class="keyword">yield</span> item</div><div class="line"></div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">      self.task_done()</div></pre></td></tr></table></figure></p>
-<h2 id="使用协程来模拟并发"><a href="#使用协程来模拟并发" class="headerlink" title="使用协程来模拟并发"></a>使用协程来模拟并发</h2><ul>
-<li>前面使用线程来实现的并发的方式，但多线程存在维护难度大，切换开销大等缺点。我们可以使用协程来实现并发。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_coroutine</span><span class="params">()</span>:</span></div><div class="line">  received = <span class="keyword">yield</span> <span class="number">3</span></div><div class="line">  <span class="keyword">print</span> (<span class="string">'received'</span>, received)</div><div class="line"></div><div class="line">it = my_coroutine()</div><div class="line">value = next(it) <span class="comment"># or it.next()</span></div><div class="line">it.send(<span class="string">"first"</span>)</div><div class="line">it.send(<span class="string">"second"</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>程序开始运行的时候，当运行到<code>value = next(it)</code>的时候，线程会在这里会被阻塞，切换到<code>received = yield 3</code>。这里yield会给received返回一个值。当调用send的时候，会将send的值赋给received，并继续运行。这样就能实现并发执行程序。<strong>注意一点，send or next，都只执行到下一个yield</strong>。</p>
 
       
 
@@ -251,6 +168,266 @@
     <div class="article-info article-info-index">
       
       
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/django/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-flask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记录学习flask的知识"><a href="#记录学习flask的知识" class="headerlink" title="记录学习flask的知识"></a>记录学习flask的知识</h1><hr>
+<h3 id="itsdangerous"><a href="#itsdangerous" class="headerlink" title="itsdangerous"></a><code>itsdangerous</code></h3><p>1.签名接口<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> Signer</div><div class="line">s = Singer(<span class="string">'secret-key'</span>)</div><div class="line">&gt;&gt; s.sign(<span class="string">'my string'</span>)</div><div class="line">&gt; <span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span></div><div class="line">&gt;&gt; s.unsign(<span class="string">'my string.wh6tMHxLgJqB6oY1uT73iMlyrOA'</span>)</div><div class="line">&gt; <span class="string">'my string'</span></div></pre></td></tr></table></figure></p>
+<p>2.使用时间戳签名</p>
+<ul>
+<li>时间戳签名可以过期。反签名的时候可以验证有没有过期<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> TimestampSigner</div><div class="line">s = TimestampSigner(<span class="string">'secret-key'</span>)</div><div class="line">string = s.sign(<span class="string">'foo'</span>)</div><div class="line">s.unsign(string, max_age = <span class="number">5</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.序列化</p>
+<ul>
+<li>因为字符串难以处理，本模块也提供了一个与json<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> Serializer</div><div class="line">s = Serializer(<span class="string">'secret-key'</span>)</div><div class="line">s.dumps([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">&gt;&gt; <span class="string">'[1, 2, 3, 4].r7R9RhGgDPvvWl3iNzLuIIfELmo'</span></div><div class="line">s.loads(<span class="string">'[1, 2, 3, 4].r7R9RhGgDPvvWl3iNzLuIIfELmo'</span>)</div><div class="line">&gt;&gt; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>4.URL安全序列化</p>
+<ul>
+<li>如果能够向只有字符受限的环境中传递可信的字符串的话，将十分有用<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> URLSafeSerializer</div><div class="line">s = URLSafeSerializer(<span class="string">'secret-key'</span>)</div><div class="line">s.dumps([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">&gt;&gt; <span class="string">'WzEsMiwzLDRd.wSPHqC0gR7VUqivlSukJ0IeTDgo'</span></div><div class="line">s.loads(<span class="string">'WzEsMiwzLDRd.wSPHqC0gR7VUqivlSukJ0IeTDgo'</span>)</div><div class="line">&gt;&gt; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>5.JSON WEB签名<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itsdangerous <span class="keyword">import</span> JSONWebSignatureSerializer</div><div class="line">s = JSONWebSignatureSerializer(<span class="string">'secret-key'</span>)</div><div class="line">s.dumps(&#123;<span class="string">'x'</span>:<span class="number">42</span>&#125;)</div><div class="line">&gt;&gt; <span class="string">'eyJhbGciOiJIUzI1NiJ9.eyJ4Ijo0Mn0.ZdTn1YyGz9Yx5B5wNpWRL221G1WpVE5fPCPKNuc6UAo'</span></div><div class="line">s.loads(<span class="string">'eyJhbGciOiJIUzI1NiJ9.eyJ4Ijo0Mn0.ZdTn1YyGz9Yx5B5wNpWRL221G1WpVE5fPCPKNuc6UAo'</span>)</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/flask/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-high_quality_python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/high_quality_python/">高质量python编程读书笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/high_quality_python/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高质量python编程读书笔记"><a href="#高质量python编程读书笔记" class="headerlink" title="高质量python编程读书笔记"></a>高质量python编程读书笔记</h1><h3 id="利用assert来发现问题"><a href="#利用assert来发现问题" class="headerlink" title="利用assert来发现问题"></a>利用assert来发现问题</h3><ul>
+<li><code>assert expression1 , expression2</code><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">1</span></div><div class="line">y = <span class="number">2</span></div><div class="line"><span class="keyword">assert</span> x == y, <span class="string">"not equals"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="数据交换不使用中间值"><a href="#数据交换不使用中间值" class="headerlink" title="数据交换不使用中间值"></a>数据交换不使用中间值</h3><ul>
+<li><code>x,y = y,x</code></li>
+</ul>
+<h3 id="不推荐使用type来进行类型检查"><a href="#不推荐使用type来进行类型检查" class="headerlink" title="不推荐使用type来进行类型检查"></a>不推荐使用type来进行类型检查</h3><ul>
+<li>python可以使用type来检查类型，例如<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> types</div><div class="line"></div><div class="line"><span class="keyword">print</span> type(n) <span class="keyword">is</span> types.IntType</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="尽量转换为浮点类型后再做除法"><a href="#尽量转换为浮点类型后再做除法" class="headerlink" title="尽量转换为浮点类型后再做除法"></a>尽量转换为浮点类型后再做除法</h3><h3 id="eval安全漏洞"><a href="#eval安全漏洞" class="headerlink" title="eval安全漏洞"></a>eval安全漏洞</h3><ul>
+<li>eval可以将字符串当作表达式来运算，但是表达式存在安全漏洞，如果源不是可信任的情况下，不使用eval。在需要使用eval<br>的情况下用更安全的<code>ast.literal_eval()</code>代替，<code>literal_eval()</code>可以会检测是不少合法的python类型，是的话才执行</li>
+</ul>
+<h3 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate()"></a>enumerate()</h3><ul>
+<li>尽量使用enumerate</li>
+</ul>
+<h3 id="考虑兼容性问题尽量使用unicodesssss"><a href="#考虑兼容性问题尽量使用unicodesssss" class="headerlink" title="考虑兼容性问题尽量使用unicodesssss"></a>考虑兼容性问题尽量使用unicodesssss</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/high_quality_python/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-linux_command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/linux_command/">linux command</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/linux_command/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h1><h3 id="创建符号链接"><a href="#创建符号链接" class="headerlink" title="创建符号链接"></a>创建符号链接</h3><p><strong><em>硬链接</em></strong></p>
+<ul>
+<li>硬链接是一个文件名，创建指令。硬链接有一个计数器，没删除一个硬链接，计数器减1,当计数器归0的时候，删除文件。<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>&gt;ln fun fun-hard</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><em>软链接</em></strong></p>
+<ul>
+<li>软链接类似于一个指针，可以只向文件和文件夹，硬链接不能指向文件夹<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>&gt; ln -s fun fun-soft</div></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/05/06/linux_command/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/linux_command/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-effective-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/effective-python/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="类与继承"><a href="#类与继承" class="headerlink" title="类与继承"></a>类与继承</h2><h2 id="多用public属性，少用private属性"><a href="#多用public属性，少用private属性" class="headerlink" title="多用public属性，少用private属性"></a>多用public属性，少用private属性</h2><ul>
+<li>对于python的类来说，其属性可见度只有两种，即public和private。<br>以两个下划线开头的属性是private字段(private字段，开头至少有两个下划线，结尾最多一个下划线)。</li>
+</ul>
+<p>举个例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">myobject</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.__private_ = <span class="number">1</span></div><div class="line"></div><div class="line">me = myobject()</div><div class="line"><span class="keyword">print</span> me.__private_</div></pre></td></tr></table></figure></p>
+<p>这个时候会报错，如果要访问_<em>private</em>属性，要通过类里的方法来访问。还有一点要注意，<strong>继承这个类的子类是无法访问private属性的</strong>。<br>
+        
+          <a class="article-more-a" href="/2017/05/06/effective-python/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -270,6 +447,203 @@
 
 
   
+    <article id="post-python-cookbook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/python-cookbook/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="让带有N个参数的可调用对象以较少的参数形式调用"><a href="#让带有N个参数的可调用对象以较少的参数形式调用" class="headerlink" title="让带有N个参数的可调用对象以较少的参数形式调用"></a>让带有N个参数的可调用对象以较少的参数形式调用</h2><ul>
+<li>看下面的例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">output_result</span><span class="params">(result, log = None)</span>:</span></div><div class="line">  <span class="keyword">if</span> log <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">    log.debug(<span class="string">'Got: %r'</span>, result)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x+y</div><div class="line"></div><div class="line"><span class="keyword">if</span> __nam__== <span class="string">'__main__'</span>:</div><div class="line">  <span class="keyword">import</span> logging</div><div class="line">  <span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">  <span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"></div><div class="line">  logging.basicConfig(level = logging.DEBUG)</div><div class="line">  log = logging.getLogger(<span class="string">'test'</span>)</div><div class="line"></div><div class="line">  p = Pool()</div><div class="line">  p.apply_async(add, (<span class="number">3</span>, <span class="number">4</span>), callback = partial(output_result, log = log))</div><div class="line">  p.close()</div><div class="line">  p.join()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/05/06/python-cookbook/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/python-cookbook/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/mysql/">mysql</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/mysql/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mysql数据库操作指令"><a href="#mysql数据库操作指令" class="headerlink" title="mysql数据库操作指令"></a>mysql数据库操作指令</h1><h3 id="连接指令"><a href="#连接指令" class="headerlink" title="连接指令"></a>连接指令</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)</div><div class="line"></div><div class="line">mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“root”，密码“123”)</div><div class="line"></div><div class="line">mysql -h localhost -u root -p(MySQL 连接本地数据库，用户名为“root”，隐藏密码)</div></pre></td></tr></table></figure>
+<h3 id="mysql权限管理"><a href="#mysql权限管理" class="headerlink" title="mysql权限管理"></a>mysql权限管理</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-administration.html" target="_blank" rel="external">MYSQL权限管理</a></p>
+<h3 id="mysql数据类型"><a href="#mysql数据类型" class="headerlink" title="mysql数据类型"></a>mysql数据类型</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-data-types.html" target="_blank" rel="external">MYSQL数据类型</a><br>
+        
+          <a class="article-more-a" href="/2017/05/06/mysql/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/mongodb/">mongodb</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/mongodb/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoEngine"><a href="#MongoEngine" class="headerlink" title="MongoEngine"></a>MongoEngine</h1><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *</div><div class="line"></div><div class="line">connect(<span class="string">'mydb'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  email = StringField(required = <span class="keyword">True</span>)</div><div class="line">  first_name = StringField(max_length = <span class="number">50</span>)</div><div class="line">  last_name = StringField(max_length = <span class="number">50</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>这是一个最基本的模型，这个类就是集合的一个映射，集合的名字就是类的名字</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(Document)</span>:</span></div><div class="line">  title = StringField(max_length = <span class="number">120</span>, required = <span class="keyword">True</span>)</div><div class="line">  author = ReferenceField(User)</div><div class="line">  tags = ListField(StringField(max_length = <span class="number">30</span>))</div><div class="line">  meta = &#123;<span class="string">'allow_inheritance'</span>:<span class="keyword">True</span>&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextPost</span><span class="params">(Post)</span>:</span></div><div class="line">  content = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImagePost</span><span class="params">(Post)</span>:</span></div><div class="line">  image_path = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkPost</span><span class="params">(Post)</span>:</span></div><div class="line">  link_url = StringField()</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/06/mongodb/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/mongodb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -297,10 +671,10 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -360,6 +734,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">编程,笔记</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -433,7 +811,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">EvilPanda&lt;br&gt;&lt;br&gt;python码农&lt;br&gt;喜欢二次元和炉石传说,偶像是kenneth reitz和kolento</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;br&gt;    EvilPanda&lt;br&gt;&lt;br&gt;    python码农&lt;br&gt;    喜欢二次元和炉石传说&lt;br&gt;    偶像是kenneth reitz和kolento</div>
   	  	
     	</section>
     

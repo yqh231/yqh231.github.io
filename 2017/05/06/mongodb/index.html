@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | EvilPanda的博客</title>
+  <title>mongodb | EvilPanda的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
-<meta name="keywords" content="python, 码农, 天元突破">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EvilPanda的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="MongoEngine 1234567from mongoengine import *connect(&apos;mydb&apos;)class User(Document):  email = StringField(required = True)  first_name = StringField(max_length = 50)  last_name = StringField(max_length =">
+<meta name="keywords" content="编程,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb">
+<meta property="og:url" content="http://yoursite.com/2017/05/06/mongodb/index.html">
 <meta property="og:site_name" content="EvilPanda的博客">
-<meta property="og:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
+<meta property="og:description" content="MongoEngine 1234567from mongoengine import *connect(&apos;mydb&apos;)class User(Document):  email = StringField(required = True)  first_name = StringField(max_length = 50)  last_name = StringField(max_length =">
+<meta property="og:updated_time" content="2017-05-06T04:19:45.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EvilPanda的博客">
-<meta name="twitter:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
+<meta name="twitter:title" content="mongodb">
+<meta name="twitter:description" content="MongoEngine 1234567from mongoengine import *connect(&apos;mydb&apos;)class User(Document):  email = StringField(required = True)  first_name = StringField(max_length = 50)  last_name = StringField(max_length =">
   
     <link rel="alternative" href="/atom.xml" title="EvilPanda的博客" type="application/atom+xml">
   
@@ -147,78 +148,337 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mongodb" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongodb
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/mongodb/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoEngine"><a href="#MongoEngine" class="headerlink" title="MongoEngine"></a>MongoEngine</h1><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *</div><div class="line"></div><div class="line">connect(<span class="string">'mydb'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  email = StringField(required = <span class="keyword">True</span>)</div><div class="line">  first_name = StringField(max_length = <span class="number">50</span>)</div><div class="line">  last_name = StringField(max_length = <span class="number">50</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>这是一个最基本的模型，这个类就是集合的一个映射，集合的名字就是类的名字</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span><span class="params">(Document)</span>:</span></div><div class="line">  title = StringField(max_length = <span class="number">120</span>, required = <span class="keyword">True</span>)</div><div class="line">  author = ReferenceField(User)</div><div class="line">  tags = ListField(StringField(max_length = <span class="number">30</span>))</div><div class="line">  meta = &#123;<span class="string">'allow_inheritance'</span>:<span class="keyword">True</span>&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextPost</span><span class="params">(Post)</span>:</span></div><div class="line">  content = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImagePost</span><span class="params">(Post)</span>:</span></div><div class="line">  image_path = StringField()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkPost</span><span class="params">(Post)</span>:</span></div><div class="line">  link_url = StringField()</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>Post是一个基类，<code>meta = {&#39;allow_inheritance&#39;：True}</code>就可以被子类继承，<code>ReferenceField</code>是引用其他文档。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">connect(name = <span class="string">'test'</span>, username = <span class="string">'user'</span>, password = <span class="number">1234</span>, host = <span class="string">'192.168.1.35'</span>, port = <span class="number">27017</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>展示了connect的用法，connect类用来链接数据库。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine.context_managers <span class="keyword">import</span> switch_db</div><div class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *</div><div class="line"></div><div class="line">connect(<span class="string">'myexample'</span>, alias = <span class="string">'archive-user-db'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  name = StringField()</div><div class="line">  meta = &#123;<span class="string">'db'</span>&#125;</div><div class="line"></div><div class="line"><span class="keyword">with</span> switch_db(User, <span class="string">'archive-user-db'</span>) <span class="keyword">as</span> User:</div><div class="line">    User(name = <span class="string">'Ross'</span>).save()</div></pre></td></tr></table></figure>
+<ul>
+<li>使用switch_db的时候，需要在connet中注册。</li>
+</ul>
+<h2 id="Field-arguments"><a href="#Field-arguments" class="headerlink" title="Field arguments"></a>Field arguments</h2><ul>
+<li>db_field(Default:None) The MongoDB field name</li>
+<li>required(Default:False) 如果这个参数是True，不设置报错。</li>
+<li>default(Default:None) 如果没有设置参数用这里面的默认值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleFirst</span><span class="params">(Document)</span>:</span></div><div class="line">  values = ListField(IntField(), default = list) <span class="comment">#default an empty List</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleSecond</span><span class="params">(Document)</span>:</span></div><div class="line">  values = ListFilld(IntField(), default = <span class="keyword">lambda</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">#default a set of values</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleThird</span><span class="params">(Document)</span>:</span></div><div class="line">  values = ListFilld(IntField(), default = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">#前面的list中append1,2,3</span></div></pre></td></tr></table></figure>
+<ul>
+<li>unique(Default : false) 当这个参数设置为True的时候，集合中的其他文档不能用同一个值</li>
+<li>primary_key(Default:False) 当这个值为True时，用这个field作为主键</li>
+<li>chioces(Defalut:None) 这是一个迭代器，具体用法见下面例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SIZE = ((<span class="string">'S'</span>,<span class="string">'small'</span>), (<span class="string">'M'</span>,<span class="string">'medium'</span>),(<span class="string">'L'</span>,<span class="string">'large'</span>))</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shirt</span><span class="params">(Document)</span>:</span></div><div class="line">  size = StringField(max_length = <span class="number">3</span>, chioces = SIZE)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="嵌入式文档"><a href="#嵌入式文档" class="headerlink" title="嵌入式文档"></a>嵌入式文档</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">comment</span><span class="params">(EmbeddedDocument)</span>:</span></div><div class="line">  content = StringField()</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(Document)</span>:</span></div><div class="line">  comments = ListField(EmbeddedDocument(comment))</div><div class="line"></div><div class="line">comment1 = comment(content = <span class="string">'Good work!'</span>)</div><div class="line">comment2 = comment(content = <span class="string">'NIce article!'</span>)</div><div class="line">page = Page(comments = [comment1, comment2])</div></pre></td></tr></table></figure>
+<ul>
+<li>mongodb允许使用嵌入式文档，具体用法见上例。</li>
+</ul>
+<h2 id="Dictionary-Fields"><a href="#Dictionary-Fields" class="headerlink" title="Dictionary Fields"></a>Dictionary Fields</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SurveyResponse</span><span class="params">(Document)</span>:</span></div><div class="line">  date = DateTimeField()</div><div class="line">  user = ReferenceField()</div><div class="line">  answers = DictField()</div><div class="line"></div><div class="line">survey_response = SurveyResponse(date = datetime.now(), user = request.user)</div><div class="line">response_form = ResponseForm(response.POST)</div><div class="line">survey_response.answers = response_form.cleaned_data()</div><div class="line">survey_response.save()</div></pre></td></tr></table></figure>
+<h2 id="Reference-fields"><a href="#Reference-fields" class="headerlink" title="Reference fields"></a>Reference fields</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  name = StringField()</div><div class="line">  author = ReferenceField(User)</div></pre></td></tr></table></figure>
+<ul>
+<li>可以用来存储数据库中的其他文档</li>
+</ul>
+<h2 id="BooleanField"><a href="#BooleanField" class="headerlink" title="BooleanField"></a>BooleanField</h2><h2 id="数据库查询"><a href="#数据库查询" class="headerlink" title="数据库查询"></a>数据库查询</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> user <span class="keyword">in</span> User.objects:</div><div class="line">  <span class="keyword">print</span> user.name</div></pre></td></tr></table></figure>
+<ul>
+<li>这是普通查询</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uk_users = User.objects(country = <span class="string">'uk'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>这是普通的条件查询，筛选出country为uk的内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uk_pages = Page.objects(author__country = <span class="string">'uk'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>查询嵌入式文档里的数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">young_users = User.objects(age__lte = <span class="number">18</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>查询条件筛选，通过关键字来筛选</li>
+</ul>
+<ol>
+<li>ne – not equal to</li>
+<li>lt – less than</li>
+<li>lte – less than or equal to</li>
+<li>gt – greater than</li>
+<li>gte – greater than or equal to</li>
+<li>not – negate a standard check</li>
+<li>in – value is in list</li>
+<li>nin – value is not in list</li>
+<li>mod-value % x == y, where x and y are two provided values</li>
+<li>all  – every item in list of values provided is in array</li>
+<li>size – the size of the array is</li>
+<li>exists – value for field exists</li>
+</ol>
+<h3 id="字符串查询"><a href="#字符串查询" class="headerlink" title="字符串查询"></a>字符串查询</h3><ol>
+<li>exact – string field exactly matches value</li>
+<li>iexact – string field exactly matches value(case insensitive)</li>
+<li>contains – string field contains value</li>
+<li>icontains – string field contains value(case insensitive)</li>
+<li>startswith – string field starts with value</li>
+<li>istartswith – string field starts with value(case insensitive)</li>
+<li>endswith – string field ends with value</li>
+<li>iendswith – string field ends with value(case insensitive)</li>
+<li>match – performs an $elemMatch so you can match an entire document within an array</li>
+</ol>
+<h3 id="查询列表Field"><a href="#查询列表Field" class="headerlink" title="查询列表Field"></a>查询列表Field</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(Document)</span>:</span></div><div class="line">  tags = ListField(StringField())</div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>Page.objects(tags = &#39;coding&#39;)</code>匹配所有字符串中里有’coding’的Page</p>
+</li>
+<li><p><code>Page.objects(tags__0 = &#39;db&#39;)</code> 通过位置来查询列表里数据</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Page.objects.fields(slice__comments=[<span class="number">5</span>,<span class="number">10</span>])</div></pre></td></tr></table></figure>
+<ul>
+<li>如果你想只取list的一部分，可以像上面一样用slice参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">users = User.objects[:<span class="number">5</span>]</div><div class="line"></div><div class="line">users = User.objects[<span class="number">5</span>:]</div><div class="line"></div><div class="line">users = User.objects[<span class="number">10</span>:<span class="number">15</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>这里是另外一些分片操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlogPost</span><span class="params">(Document)</span>:</span></div><div class="line">  title = StringField()</div><div class="line">  published = BooleanField()</div><div class="line"></div><div class="line"><span class="meta">  @queryset_manager</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">live_posts</span><span class="params">(doc_cls, queryset)</span>:</span></div><div class="line">    <span class="keyword">return</span> queryset.filter(published = <span class="keyword">True</span>)</div><div class="line">BlogPost(title = <span class="string">'test1'</span>, published = <span class="keyword">True</span>).save()</div><div class="line">BlogPost(title = <span class="string">'test2'</span>, published = <span class="keyword">False</span>).save()</div><div class="line"></div><div class="line"><span class="keyword">print</span> len(BlogPost.objects)</div><div class="line">&gt;&gt; <span class="number">2</span></div><div class="line"><span class="keyword">print</span> len(BlogPost.live_posts())</div><div class="line">&gt;&gt; <span class="number">1</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AwesomerQuerySe</span><span class="params">(Queryset)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get_awesome</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> self.filter(auwsome = <span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(Document)</span>:</span></div><div class="line">  meta = &#123;<span class="string">'queryset_class'</span>:AwesomerQuerySet&#125;</div><div class="line"></div><div class="line">Page.objects.get_awesome()</div></pre></td></tr></table></figure>
+<ul>
+<li>这是自己定义的查询实现</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> mongoengine.queryset.visitor <span class="keyword">import</span> Q</div><div class="line">post.objects(Q(published = <span class="keyword">True</span>) | (Q(publish_data__lte = datetime.now())))</div></pre></td></tr></table></figure>
+<ul>
+<li>上面是条件组合查询</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">post = BlogPost(title = <span class="string">'Test'</span>, page_views = <span class="number">0</span>, tags = [<span class="string">'database'</span>])</div><div class="line">post.save()</div><div class="line">BlogPost.objects(id = post.id).update_one(inc_page_views = <span class="number">1</span>)</div><div class="line">post.reload()</div><div class="line">post.page_views</div><div class="line"></div><div class="line">BlogPost.objects(id = post.id).update_one(set__title = <span class="string">'Example Post'</span>)</div><div class="line">post.reload()</div><div class="line">post.title</div><div class="line"></div><div class="line">BlogPost.objects(id = post.id).update_one(push__tags = <span class="string">'nosql'</span>) <span class="comment">#update()是更新所有搜索到的文档</span></div><div class="line">post.reload()</div><div class="line">post.tags</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Document)</span>:</span></div><div class="line">  name = StringField()</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span><span class="params">(Document)</span>:</span></div><div class="line">  conent = StringField()</div><div class="line">  authors = ListField(ReferenceField(User))</div><div class="line"></div><div class="line">bob = User(name = <span class="string">"Bob Jones"</span>).save()</div><div class="line">john = User(name = <span class="string">'John Smith'</span>).save()</div><div class="line"></div><div class="line">Page(content = <span class="string">"Test Page"</span>, authors = [bob, john]).save()</div><div class="line">Page(content = <span class="string">"Another Page"</span>, authores = [john]).save()</div><div class="line"></div><div class="line">Page.objects(authors__in = [bob])</div><div class="line"><span class="comment">#Find all page Bob authored</span></div><div class="line"></div><div class="line">Page.objects(authores__all = [bob, john])</div><div class="line"><span class="comment">#Find all pages that both Bob and John have authored</span></div><div class="line"></div><div class="line">Page.objects(id = <span class="string">'...'</span>).update_one(pull__authors = bob)</div><div class="line"><span class="comment">#Remove Bob from the authores for a page</span></div><div class="line"></div><div class="line">Page.objects(id = <span class="string">'...'</span>).update_one(push__authors = john)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">post = BlogPost(title=<span class="string">'Test'</span>, page_views = <span class="number">0</span>, tags = [<span class="string">'database'</span>, <span class="string">'mongo'</span>])</div><div class="line">post.save()</div><div class="line">BlogPost.objects(id = post.id, tags = <span class="string">'mongo'</span>).update(set__tags__S = <span class="string">'mongodb'</span>)</div><div class="line">post.reload()</div><div class="line"><span class="keyword">print</span> post.tags</div><div class="line"><span class="string">'[database, mongodb]'</span></div></pre></td></tr></table></figure>
+<h1 id="mongodb原生命令"><a href="#mongodb原生命令" class="headerlink" title="mongodb原生命令"></a>mongodb原生命令</h1><hr>
+<h3 id="db-foo-update-文档1-文档2-用文档2替换文档1"><a href="#db-foo-update-文档1-文档2-用文档2替换文档1" class="headerlink" title="db.foo.update({文档1}, {文档2}) #用文档2替换文档1"></a>db.foo.update({文档1}, {文档2}) #用文档2替换文档1</h3><ol>
+<li><p>inc修改器(如果以前不存在可以创建)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.analytics.update(&#123;<span class="string">"url"</span>:<span class="string">"www.example.com"</span>&#125;, &#123;<span class="string">"$inc"</span>:&#123;<span class="string">"pagevies : 1"</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>set修改器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.users.update(&#123;<span class="string">"name"</span>:<span class="string">"joe"</span>&#125;,&#123;<span class="string">"$set"</span>:&#123;<span class="string">"favorite book"</span>:<span class="string">"Green Eggs and Ham"</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>uset修改器(删除掉某个键值)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.users.update(&#123;<span class="string">"name"</span>:<span class="string">"joe"</span>&#125;, &#123;<span class="string">"$unset"</span>:&#123;<span class="string">"favorite book"</span>:<span class="number">1</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>push修改器(像数组里面增加东西)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.blog.posts.update(&#123;<span class="string">"title"</span>:<span class="string">"a blog post"</span>&#125;, &#123;<span class="string">"$push"</span>:&#123;<span class="string">"comments"</span>:<span class="string">"&#123;"</span>name<span class="string">":"</span>joe<span class="string">"&#125;"</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>each修改器(一次向数组里面push多个值)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.stock.ticked.update(&#123;<span class="string">"_id"</span>:<span class="string">"GOOG"</span>&#125;, &#123;<span class="string">"$push"</span>:&#123;<span class="string">"hourly"</span>:&#123;<span class="string">"$each"</span>:[<span class="number">555</span>,<span class="number">444</span>,<span class="number">333</span>]&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>sort修改器和slice分割器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.movies.find(&#123;<span class="string">"genre"</span>:<span class="string">"horror"</span>&#125;, &#123;<span class="string">"$push"</span>:&#123;<span class="string">"top10"</span>:&#123;<span class="string">"$each"</span>:[&#123;<span class="string">"raings"</span>:<span class="number">1</span>&#125;,&#123;<span class="string">"raings"</span>:<span class="number">2</span>&#125;], <span class="string">"$slice"</span>:<span class="number">-10</span>, <span class="string">"$sort"</span>:&#123;<span class="string">"ratings"</span>:<span class="number">-1</span>&#125;&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>slice表示只允许数组包含最后10个数组，sort表示按ratings来排序</li>
+</ul>
+<ol>
+<li>addToSet修改器，将不重复的数据写进去<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.users.findOne(&#123;<span class="string">"_id"</span>:<span class="string">"xxx"</span>&#125;, &#123;<span class="string">"$addToSet"</span>:&#123;<span class="string">"emails"</span>:&#123;<span class="string">"$each"</span>:[<span class="string">"xxx1"</span>, <span class="string">"xxxx2"</span>]&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>$each和$addToSet结合使用可以批量添加数据</li>
+</ul>
+<ol>
+<li>pop修改器<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.foo.update(&#123;&#125;, &#123;<span class="string">"pop"</span>:&#123;<span class="string">"key"</span>:<span class="number">1</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>从尾部删除第一个元素，如果为-1从头部删除第一个元素</li>
+</ul>
+<ol>
+<li>pull修改器<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.list.update(&#123;&#125;, &#123;<span class="string">"$pull"</span>:&#123;<span class="string">"array"</span>:<span class="number">1</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>pull是用来删除指定元素，pull会将文档中所有与指定相同元素删除</li>
+</ul>
+<ol>
+<li>基于位置的数组修改器<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.blog.update(&#123;<span class="string">"post"</span>:post_id&#125;, &#123;<span class="string">"$inc"</span>:&#123;<span class="string">"comments.0.votes"</span>:<span class="number">1</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>0代表comments数组下标下的集合</li>
+<li>db.foo.stats() #查看填充因子</li>
+<li>db.runCommand({“collMod”:collectionName, “usePowerOf2Sizes”:true})。该命令得到块的大小都是2的幂。<br>会使空间利用不那么高效，但是可以使用于经常打乱的集合</li>
+</ul>
+<p><strong><em>upsert</em></strong></p>
+<ul>
+<li><p>upsert是一种特殊的更新。要是没有找到符合更新条件的文档，就会以这个条件和更新文档为基础创建一个新文档。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.foo.update(&#123;<span class="string">"url"</span>:<span class="string">"/blog"</span>&#125;,&#123;<span class="string">"inc"</span>:&#123;<span class="string">"post"</span>:<span class="number">1</span>&#125;&#125;, true)</div></pre></td></tr></table></figure>
+</li>
+<li><p>update中第三个参数设置为True，表示upsert模式</p>
+</li>
+</ul>
+<p><strong><em>更新多个文档</em></strong></p>
+<ul>
+<li><p>update只会对符合条件的第一个文档执行操作，其他文档不会进行操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.user.update(&#123;<span class="string">"birthdar"</span>:<span class="string">"10/13/1978"</span>&#125;, &#123;<span class="string">"$set"</span>:&#123;<span class="string">"gift"</span>:<span class="string">"happy birthday"</span>&#125;&#125;, false ,true)</div></pre></td></tr></table></figure>
+</li>
+<li><p>将第四个参数设置为true，会更新多个文档</p>
+</li>
+</ul>
+<p><strong><em>findAndModify</em></strong></p>
+<ul>
+<li><a href="http://blog.csdn.net/u022812849/article/details/51314815" target="_blank" rel="external">findAndModify</a></li>
+</ul>
+<h3 id="Find参数"><a href="#Find参数" class="headerlink" title="Find参数"></a>Find参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.user.find(&#123;&#125;,&#123;<span class="string">"username"</span>:<span class="number">1</span>, <span class="string">"email"</span>:<span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>只查询username和email参数。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.user.find(&#123;&#125;,&#123;<span class="string">"fatal_weakness"</span>:<span class="number">0</span>&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>删除查询结果中的某些键值对。</li>
+</ul>
+<h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><ul>
+<li>$lt &lt;</li>
+<li>$lte &lt;=</li>
+<li>$gt &gt;</li>
+<li>$gte &gt;=</li>
+<li><p>$ne !=</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.users.find(&#123;<span class="string">"age"</span>:&#123;<span class="string">"$gte"</span>:<span class="number">18</span>, <span class="string">"$lt"</span>:<span class="number">30</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>$in</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.raffle.find(&#123;<span class="string">"ticket_no"</span>:&#123;<span class="string">"$in"</span>:[<span class="number">725</span>, <span class="number">542</span>, <span class="number">390</span>]&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查找ticket_no键的值对应752.542,390的文档</p>
+</li>
+<li><p>$nin</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.raffle.find(<span class="string">"ticket_no"</span>:&#123;<span class="string">"$nin"</span>:[<span class="number">725</span>, <span class="number">542</span>, <span class="number">390</span>]&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回数组中与725,542,390的值都不对应的文档</p>
+</li>
+<li><p>$or</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.raffle.find(&#123;<span class="string">"$or"</span>:[&#123;<span class="string">"ticket_no"</span>:<span class="number">725</span>&#125;, &#123;<span class="string">"winner"</span>:<span class="string">"true"</span>&#125;]&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查找ticket_no为725，或者winner为true的文档</p>
+</li>
+<li><p>$and</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.users.find(&#123;<span class="string">"$and"</span>:[&#123;<span class="string">"x"</span>, &#123;<span class="string">"$lt"</span>:<span class="number">1</span>&#125;&#125;, &#123;<span class="string">"x"</span>:<span class="number">4</span>&#125;]&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>null</p>
+</li>
+<li>null类型不仅匹配自身，也匹配这个字段缺省的文档。</li>
+</ul>
+<h4 id="数组查询"><a href="#数组查询" class="headerlink" title="数组查询"></a>数组查询</h4><ul>
+<li><p>$all</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.foo.find(&#123;fruit:&#123;$all:[<span class="string">"apple"</span>, <span class="string">"banana"</span>]&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>all用来数组查询，查询数组中既有apple，又有banana的数组。[apple,banana]</p>
+</li>
+<li><p>$size</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.foo.find(&#123;<span class="string">"fruit"</span>:&#123;<span class="string">"$size"</span>:<span class="number">3</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>size用来查询数组长度，上面是查询数组长度为3的数组</p>
+</li>
+<li><p>$slice</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.blog.posts.findOne(criteria, &#123;<span class="string">"comment"</span>:&#123;<span class="string">"$slice"</span>:<span class="number">10</span>&#125;&#125;)</div><div class="line">``</div><div class="line">* 只返回前十条评论</div><div class="line"></div><div class="line">* 返回一个匹配的数组元素</div><div class="line">```python</div><div class="line">db.blog.posts.find(&#123;<span class="string">"comments.name"</span>:<span class="string">"bob"</span>&#125;, &#123;<span class="string">"comments.$"</span>:<span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>返回名字为bob的第一个文档</p>
+</li>
+<li><p>数组和范围查询的相互作用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.test.find(&#123;<span class="string">"x"</span>:&#123;<span class="string">"$gt"</span>:<span class="number">10</span>, <span class="string">"$lt"</span>:<span class="number">20</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>这个查询数组中不仅会返回{x:15},而且会返回{x:[5,25]}，会查找小于20的数，也会查找大于10的数。不是求交集。</p>
+</li>
+<li><p>可以用下面方法来解决</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.test.find(&#123;<span class="string">"x"</span>:&#123;<span class="string">"$gt"</span>:<span class="number">10</span>, <span class="string">"lt"</span>:<span class="number">20</span>&#125;&#125;).min(&#123;<span class="string">"x"</span>:<span class="number">10</span>&#125;).max(&#123;<span class="string">"x"</span>:<span class="number">20</span>&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查找大于10且小于20的数</p>
+</li>
+</ul>
+<h3 id="查询内嵌文档"><a href="#查询内嵌文档" class="headerlink" title="查询内嵌文档"></a>查询内嵌文档</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.people.find(&#123;<span class="string">"name.first"</span>:<span class="string">"Joe"</span>, <span class="string">"name.last"</span>:<span class="string">"Schmoe"</span>&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>内嵌文档查询</li>
+<li><p>$elemMatch</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.blog.find(&#123;<span class="string">"comments"</span>:&#123;<span class="string">"$elemMatch"</span>:&#123;<span class="string">"author"</span>:<span class="string">"joe"</span>, <span class="string">"score"</span>:&#123;<span class="string">"$gte"</span>:<span class="number">5</span>&#125;&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>用了$elemMatch只返回一个内嵌文档.</p>
+</li>
+<li><p>$where</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.foo.find(&#123;<span class="string">"$where"</span>:function()&#125;)&#123;</div><div class="line">  <span class="keyword">for</span>(var current <span class="keyword">in</span> this)&#123;</div><div class="line">  ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>$where参数接受脚本</p>
+</li>
+</ul>
+<h3 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h3><ul>
+<li><p>数据库使用游标返回find的结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++)&#123;</div><div class="line">  db.collection.find()</div><div class="line">&#125;</div><div class="line">var cursor = db.collection.find()</div></pre></td></tr></table></figure>
+</li>
+<li><p>cursor.hasNext()判断数否还有结果，cursor.next()求游标下一个结果。</p>
+</li>
+</ul>
+<h3 id="limit-skip-sort"><a href="#limit-skip-sort" class="headerlink" title="limit,skip,sort"></a>limit,skip,sort</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.c.find().limit(<span class="number">3</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>最多只返回3个结果，limit()设置返回结果的上限</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.c.find().skip(<span class="number">3</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>跳过前3个搜索结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.c.find().sort(&#123;username:<span class="number">1</span>, age:<span class="number">-1</span>&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>sort参数1代表升序，-1是降序</p>
+</li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.users.ensureIndex(&#123;<span class="string">"username"</span>:<span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>为username添加索引</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/django/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/flask/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/high_quality_python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/high_quality_python/">高质量python编程读书笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -230,285 +490,98 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/mongodb/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/linux_command/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/linux_command/">linux command</a>
-    </h1>
+    <a href="/2017/05/06/mysql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/06/python_lib/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">标准库</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/effective-python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python-cookbook/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mysql/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mysql/">mysql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mongodb/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mongodb/">mongodb</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python_lib/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python_lib/">标准库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python/">python语法细节</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -531,8 +604,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

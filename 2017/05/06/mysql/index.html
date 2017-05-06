@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | EvilPanda的博客</title>
+  <title>mysql | EvilPanda的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
-<meta name="keywords" content="python, 码农, 天元突破">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EvilPanda的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="mysql数据库操作指令连接指令12345mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“roo">
+<meta name="keywords" content="编程,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql">
+<meta property="og:url" content="http://yoursite.com/2017/05/06/mysql/index.html">
 <meta property="og:site_name" content="EvilPanda的博客">
-<meta property="og:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
+<meta property="og:description" content="mysql数据库操作指令连接指令12345mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“roo">
+<meta property="og:updated_time" content="2017-05-06T04:19:46.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EvilPanda的博客">
-<meta name="twitter:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
+<meta name="twitter:title" content="mysql">
+<meta name="twitter:description" content="mysql数据库操作指令连接指令12345mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“roo">
   
     <link rel="alternative" href="/atom.xml" title="EvilPanda的博客" type="application/atom+xml">
   
@@ -147,78 +148,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mysql" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/mysql/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mysql数据库操作指令"><a href="#mysql数据库操作指令" class="headerlink" title="mysql数据库操作指令"></a>mysql数据库操作指令</h1><h3 id="连接指令"><a href="#连接指令" class="headerlink" title="连接指令"></a>连接指令</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -h localhost -u root -p123(MySQL 连接本地数据库，用户名为“root”，密码“123”（注意：“-p”和“123” 之间不能有空格）)</div><div class="line"></div><div class="line">mysql -h 172.16.16.45 -P 3306 -u root -p123(MySQL 连接远程数据库（192.168.0.201），端口“3306”，用户名为“root”，密码“123”)</div><div class="line"></div><div class="line">mysql -h localhost -u root -p(MySQL 连接本地数据库，用户名为“root”，隐藏密码)</div></pre></td></tr></table></figure>
+<h3 id="mysql权限管理"><a href="#mysql权限管理" class="headerlink" title="mysql权限管理"></a>mysql权限管理</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-administration.html" target="_blank" rel="external">MYSQL权限管理</a></p>
+<h3 id="mysql数据类型"><a href="#mysql数据类型" class="headerlink" title="mysql数据类型"></a>mysql数据类型</h3><p><a href="http://www.w3cschool.cn/mysql/mysql-data-types.html" target="_blank" rel="external">MYSQL数据类型</a><br><a id="more"></a></p>
+<h3 id="操作与修改表"><a href="#操作与修改表" class="headerlink" title="操作与修改表"></a>操作与修改表</h3><ul>
+<li>MYSQL自增特性<code>ALTER TABLE person MODIFY person_id SMALLINT UNSIGNED AUTO_INCREMENT</code></li>
+<li><p>插入语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> person</div><div class="line">(person_id, fname,lname,gender,birth_data)</div><div class="line"><span class="keyword">VALUES</span>(<span class="literal">null</span>, <span class="string">'William'</span>, <span class="string">'Turner'</span>, <span class="string">'M'</span>, <span class="string">'1972-05-27'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> person_id,fname,lname,birth_data</div><div class="line"><span class="keyword">FROM</span> person</div><div class="line"><span class="keyword">WHERE</span> person_id = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> food</div><div class="line"><span class="keyword">FROM</span> favorite_food</div><div class="line"><span class="keyword">WHERE</span> person_id = <span class="number">1</span></div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> food;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>更新数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> person</div><div class="line"><span class="keyword">SET</span> street = <span class="string">'1225 Tremont St.'</span>,</div><div class="line"> city = <span class="string">'Boston'</span>,</div><div class="line"> state = <span class="string">'MA'</span>,</div><div class="line"> country = <span class="string">'USA'</span>,</div><div class="line"> postal_code = <span class="string">'02138'</span></div><div class="line"><span class="keyword">WHERE</span> person_id = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>显示数据库中的表<code>SHOW TABLES;</code></p>
+</li>
+<li>删除数据库中的表<code>DROP TABLE person</code></li>
+</ul>
+<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><ul>
+<li>SELECT子句</li>
+<li>SELECT子句用于在所有可能的列中，选择查询结果集包含哪些列。可以包含下面的信息</li>
+</ul>
+<ol>
+<li>字符，比如数字或字符串</li>
+<li>表达式</li>
+<li>调用内建函数</li>
+<li>用户自定义的函数调用<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> department;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>列的别名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> emp_id,</div><div class="line"> <span class="string">'ACTIVE'</span> <span class="keyword">AS</span> <span class="keyword">status</span>,</div><div class="line">  emp_id * <span class="number">3.14</span> <span class="keyword">AS</span> empid_x_pi,</div><div class="line">  <span class="keyword">UPPER</span>(lname) <span class="keyword">AS</span> last_name_upper</div><div class="line"><span class="keyword">FROM</span> employee;</div></pre></td></tr></table></figure>
+</li>
+<li><p>去除重复行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> cust_id</div><div class="line"><span class="keyword">FROM</span> <span class="keyword">account</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="sqlalchemy的使用"><a href="#sqlalchemy的使用" class="headerlink" title="sqlalchemy的使用"></a>sqlalchemy的使用</h1><ul>
+<li>这部分通过例子直接看怎么用，要快一点<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</div><div class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</div><div class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</div><div class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, Integer, String,Table, MetaData</div><div class="line"></div><div class="line">DB_CONNECT_STRING = <span class="string">'mysql://root:2316678@localhost/test?charset=utf8'</span></div><div class="line"><span class="comment">#python3不支持mysqldb,用pymysql</span></div><div class="line"><span class="comment">#链接数据库的url，mysql是要链接的数据库，root是用户名，2316678是密码，localhost是ip，test链接的数据库（可省略），charset是utf-8编码格式</span></div><div class="line">engine = create_engine(DB_CONNECT_STRING, echo = <span class="keyword">True</span>)</div><div class="line"><span class="comment">#创建引擎</span></div><div class="line">DB_seesion = sessionmaker(bind = engine)</div><div class="line"><span class="comment">#链接数据库的会话</span></div><div class="line">session = DB_seesion()</div><div class="line"><span class="comment">#会话实例化</span></div><div class="line">Base = declarative_base()</div><div class="line"><span class="comment">#sqlalchemy的Base实例</span></div><div class="line">meta = MetaData(engine)</div><div class="line"><span class="comment">#初始化元信息</span></div><div class="line">user_table = Table(<span class="string">'users'</span>, meta,</div><div class="line">                   Column(<span class="string">'id'</span>, Integer, primary_key=<span class="keyword">True</span>),</div><div class="line">                   Column(<span class="string">'name'</span>, String(<span class="number">127</span>)),</div><div class="line">                   Column(<span class="string">'fullname'</span>, String(<span class="number">127</span>)),</div><div class="line">                   Column(<span class="string">'password'</span>, String(<span class="number">127</span>)))</div><div class="line"><span class="comment">#创建表信息</span></div><div class="line">user_table.create(bind=engine)</div><div class="line"><span class="comment">#真正创建表</span></div><div class="line"><span class="keyword">print</span> (session.execute(<span class="string">"select * from users;"</span>).fetchall())</div><div class="line"><span class="comment">#用session执行sql原生指令，fetchall()用列表返回所有结果</span></div><div class="line"><span class="keyword">print</span> (session.execute(<span class="string">"select * from users;"</span>).first())</div><div class="line"><span class="comment">#first()返回第一个结果</span></div><div class="line"><span class="keyword">print</span> (session.excute(<span class="string">"select * from users;"</span>).fetchone())</div><div class="line"><span class="comment">#fetchone()获得游标的下一个结果</span></div><div class="line"><span class="keyword">print</span> (session.excute(<span class="string">"select * from users;"</span>).fetchmany(size=<span class="number">3</span>))</div><div class="line"><span class="comment">#获取size大小的结果</span></div><div class="line"><span class="keyword">print</span> (session.execute(<span class="string">'select * from users where id = :id'</span>, &#123;<span class="string">'id'</span>: <span class="number">1</span>&#125;).first())</div><div class="line"><span class="comment">#这里使用变量</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Base)</span>:</span></div><div class="line">    __tablename__ = <span class="string">'users'</span></div><div class="line">    id = Column(Integer, primary_key=<span class="keyword">True</span>)</div><div class="line">    name = Column(String)</div><div class="line">    fullname = Column(String)</div><div class="line">    password = Column(String)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">"&lt;User(name = &#123;&#125;, fullname=&#123;&#125;, passwd=&#123;&#125;)&gt;"</span>.format(self.name,</div><div class="line">                                                                  self.fullname,</div><div class="line">                                                                  self.password)</div><div class="line"></div><div class="line">ed_user = User(name = <span class="string">'esd'</span>, fullname = <span class="string">'Ed Jones'</span>, password = <span class="string">'test'</span>)</div><div class="line"><span class="comment">#实例化User对象</span></div><div class="line">session.add(ed_user)</div><div class="line"><span class="comment">#添加</span></div><div class="line">session.commit()</div><div class="line"><span class="comment">#提交</span></div><div class="line">query = session.query(User)</div><div class="line"><span class="keyword">for</span> user <span class="keyword">in</span> query:</div><div class="line">    <span class="keyword">print</span> (user.name)</div><div class="line"><span class="comment">#查询并且便利对象数组</span></div><div class="line"><span class="keyword">print</span> (session.query(User).filter_by(id = <span class="number">1</span>).first().name)</div><div class="line"><span class="keyword">print</span> (session.query(User).filter(User.id == <span class="number">1</span>).first().name)</div><div class="line"><span class="comment">#这两者的过滤区别主要是用法不一样</span></div><div class="line"><span class="keyword">print</span> (session.query(User).get(<span class="number">2</span>).name)</div><div class="line"><span class="comment">#获取主键</span></div><div class="line"><span class="keyword">print</span> (session.query(User).filter_by(id=<span class="number">1</span>).scalar())</div><div class="line"><span class="comment">#这里如果表中只有一列则返回，如果有多个列则raise错误</span></div><div class="line"></div><div class="line">query2 = session.query(User.name)</div><div class="line"><span class="keyword">print</span> query2.all() <span class="comment"># 每行是个元组</span></div><div class="line"><span class="keyword">print</span> query2.limit(<span class="number">1</span>).all() <span class="comment"># 最多返回 1 条记录</span></div><div class="line"><span class="keyword">print</span> query2.offset(<span class="number">1</span>).all() <span class="comment"># 从第 2 条记录开始返回</span></div><div class="line"><span class="keyword">print</span> query2.order_by(User.name).all()</div><div class="line"></div><div class="line"><span class="keyword">print</span> (query.filter_by(id = <span class="number">1</span>).update(&#123;<span class="string">'name'</span>:<span class="string">'c'</span>&#125;))</div><div class="line"><span class="comment">#1、更新表，需要commit</span></div><div class="line">query = session.query(User)</div><div class="line">user = query.get(<span class="number">1</span>)</div><div class="line"><span class="keyword">print</span> (user.name)</div><div class="line">user.name = <span class="string">'test'</span></div><div class="line"><span class="keyword">print</span> (user.name)</div><div class="line">session.flush()</div><div class="line"><span class="keyword">print</span> (user.name)</div><div class="line"><span class="comment">#2、更新表的另外一种操作</span></div><div class="line">session.flush()</div><div class="line"><span class="comment">#提交单并不真正写入数据库</span></div><div class="line">session.rollback()</div><div class="line"><span class="comment">#撤销提交的内容，但是如果commit是没办法撤销的</span></div><div class="line">session.delete(user)</div><div class="line"><span class="comment">#删除操作</span></div><div class="line"><span class="keyword">print</span> (query.all()[<span class="number">0</span>].name)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="使用sqlalchemy进行join查询"><a href="#使用sqlalchemy进行join查询" class="headerlink" title="使用sqlalchemy进行join查询"></a>使用sqlalchemy进行join查询</h4><ul>
+<li><code>session.query().join()( outerjoin())</code>不管是join还是outerjoin他们的连接对象都是query里第一个参数所代表的表</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/django/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/flask/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/high_quality_python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/high_quality_python/">高质量python编程读书笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -230,285 +255,98 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/mysql/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/linux_command/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/linux_command/">linux command</a>
-    </h1>
+    <a href="/2017/05/06/python-cookbook/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          cookbook
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/06/mongodb/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mongodb</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/effective-python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python-cookbook/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mysql/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mysql/">mysql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mongodb/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mongodb/">mongodb</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python_lib/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python_lib/">标准库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python/">python语法细节</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -531,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

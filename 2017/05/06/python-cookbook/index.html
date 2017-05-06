@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | EvilPanda的博客</title>
+  <title>cookbook | EvilPanda的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
-<meta name="keywords" content="python, 码农, 天元突破">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EvilPanda的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="让带有N个参数的可调用对象以较少的参数形式调用 看下面的例子12345678910111213141516171819def output_result(result, log = None):  if log is not None:    log.debug(&apos;Got: %r&apos;, result)def add(x, y):  return x+yif __nam__== &apos;__main__&apos;:">
+<meta name="keywords" content="编程,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookbook">
+<meta property="og:url" content="http://yoursite.com/2017/05/06/python-cookbook/index.html">
 <meta property="og:site_name" content="EvilPanda的博客">
-<meta property="og:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
+<meta property="og:description" content="让带有N个参数的可调用对象以较少的参数形式调用 看下面的例子12345678910111213141516171819def output_result(result, log = None):  if log is not None:    log.debug(&apos;Got: %r&apos;, result)def add(x, y):  return x+yif __nam__== &apos;__main__&apos;:">
+<meta property="og:updated_time" content="2017-05-06T04:20:27.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EvilPanda的博客">
-<meta name="twitter:description" content="python后台开发,喜欢动漫,炉石传说,偶像是kenneth reitz和Kolento">
+<meta name="twitter:title" content="cookbook">
+<meta name="twitter:description" content="让带有N个参数的可调用对象以较少的参数形式调用 看下面的例子12345678910111213141516171819def output_result(result, log = None):  if log is not None:    log.debug(&apos;Got: %r&apos;, result)def add(x, y):  return x+yif __nam__== &apos;__main__&apos;:">
   
     <link rel="alternative" href="/atom.xml" title="EvilPanda的博客" type="application/atom+xml">
   
@@ -147,78 +148,80 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python-cookbook" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cookbook
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/python-cookbook/" class="archive-article-date">
+  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="让带有N个参数的可调用对象以较少的参数形式调用"><a href="#让带有N个参数的可调用对象以较少的参数形式调用" class="headerlink" title="让带有N个参数的可调用对象以较少的参数形式调用"></a>让带有N个参数的可调用对象以较少的参数形式调用</h2><ul>
+<li>看下面的例子<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">output_result</span><span class="params">(result, log = None)</span>:</span></div><div class="line">  <span class="keyword">if</span> log <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">    log.debug(<span class="string">'Got: %r'</span>, result)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">  <span class="keyword">return</span> x+y</div><div class="line"></div><div class="line"><span class="keyword">if</span> __nam__== <span class="string">'__main__'</span>:</div><div class="line">  <span class="keyword">import</span> logging</div><div class="line">  <span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">  <span class="keyword">from</span> functools <span class="keyword">import</span> partial</div><div class="line"></div><div class="line">  logging.basicConfig(level = logging.DEBUG)</div><div class="line">  log = logging.getLogger(<span class="string">'test'</span>)</div><div class="line"></div><div class="line">  p = Pool()</div><div class="line">  p.apply_async(add, (<span class="number">3</span>, <span class="number">4</span>), callback = partial(output_result, log = log))</div><div class="line">  p.close()</div><div class="line">  p.join()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="用函数替代只有单个方法的类"><a href="#用函数替代只有单个方法的类" class="headerlink" title="用函数替代只有单个方法的类"></a>用函数替代只有单个方法的类</h2><ul>
+<li><p>先看一个类的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UrlTemplate</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, template)</span>:</span></div><div class="line">    self.template = template</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">open</span><span class="params">(self, **kwargs)</span>:</span></div><div class="line">    <span class="keyword">return</span> urlopen(self.template.format_map(kwargs))</div><div class="line">yahoo = UrlTemplate(<span class="string">'xxxxx'</span>)</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> yahoo.open(names = <span class="string">'IBM,APPL,FB'</span>, fields = <span class="string">'sl1c1v'</span>):</div><div class="line">  <span class="keyword">print</span> (line.decode(<span class="string">'utf-8'</span>))</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以用一个闭包函数来取代,使用类的原因主要是因为需要保存template变量，但是对于这种只有一个方法的类，我们使用闭包函数更加优雅。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Urltemplate</span><span class="params">(template)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">opener</span><span class="params">(**kwargs)</span>:</span></div><div class="line">    <span class="keyword">return</span> urlopen(template.format_map(kwargs))</div><div class="line">  <span class="keyword">return</span> opener</div><div class="line"></div><div class="line">yahoo = Urltemplate(<span class="string">'xxxxxx'</span>)</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> yahoo(names = <span class="string">'IBM, AAPL, FB'</span>, fields = <span class="string">'c11c1v'</span>)</div><div class="line">  <span class="keyword">print</span> (line.decode(<span class="string">'utf-8'</span>))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="在回调函数中携带额外的状态"><a href="#在回调函数中携带额外的状态" class="headerlink" title="在回调函数中携带额外的状态"></a>在回调函数中携带额外的状态</h2><ul>
+<li><p>用类来携带额外状态</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResultHandler</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    self.sequence = <span class="number">0</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(self, result)</span>:</span></div><div class="line">    self.sequence += <span class="number">1</span></div><div class="line">    <span class="keyword">print</span> (<span class="string">'xxx'</span>)</div><div class="line"></div><div class="line">r = ResultHandler()</div><div class="line">apply_async(add, (<span class="number">2</span>, <span class="number">3</span>), callback = r.handler)</div></pre></td></tr></table></figure>
+</li>
+<li><p>用闭包来携带额外的状态,这里用了Python3新增加的nonlocal关键字，可以使用外部变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_handler</span><span class="params">()</span>:</span></div><div class="line">  sequence = <span class="number">0</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(result)</span>:</span></div><div class="line">    <span class="keyword">nonlocal</span> sequence</div><div class="line">    sequence += <span class="number">1</span></div><div class="line">    <span class="keyword">print</span> (<span class="string">'xxxx'</span>)</div><div class="line">  <span class="keyword">return</span> handler</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="访问定义在闭包内的变量"><a href="#访问定义在闭包内的变量" class="headerlink" title="访问定义在闭包内的变量"></a>访问定义在闭包内的变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">()</span>:</span></div><div class="line">  n = <span class="number">0</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> (<span class="string">'n = '</span>, n)</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get_n</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> n</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">set_n</span><span class="params">(value)</span>:</span></div><div class="line">    <span class="keyword">nonlocal</span> n</div><div class="line">    n = value</div></pre></td></tr></table></figure>
+<ul>
+<li>nonlocal关键字是访问并修改上一级代码块的变量,global关键字是访问修改全局变量.单纯的引用不需要声明关键字.</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/django/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/flask/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:58:50.992Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/high_quality_python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/high_quality_python/">高质量python编程读书笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -230,285 +233,98 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/python-cookbook/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/linux_command/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/linux_command/">linux command</a>
-    </h1>
+    <a href="/2017/05/06/effective-python/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          effective python笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/06/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/effective-python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/effective-python/">effective python笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python-cookbook/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python-cookbook/">cookbook</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mysql/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mysql/">mysql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/mongodb/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/mongodb/">mongodb</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python_lib/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python_lib/">标准库</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python/" class="archive-article-date">
-  	<time datetime="2017-05-06T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python/">python语法细节</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">编程,笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -531,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
